@@ -1,1 +1,15 @@
 C:\Users\jward01\Documents\Visual Studio 2015\Projects\ContactManagementApp\ContactManagementApp\bin\Debug\ContactManagementApp.exe.config
+C:\Users\jward01\Documents\Visual Studio 2015\Projects\ContactManagementApp\ContactManagementApp\obj\Debug\MainWindow.g.cs
+C:\Users\jward01\Documents\Visual Studio 2015\Projects\ContactManagementApp\ContactManagementApp\obj\Debug\App.g.cs
+C:\Users\jward01\Documents\Visual Studio 2015\Projects\ContactManagementApp\ContactManagementApp\obj\Debug\ContactManagementApp_MarkupCompile.cache
+C:\Users\jward01\Documents\Visual Studio 2015\Projects\ContactManagementApp\ContactManagementApp\obj\Debug\ContactManagementApp_MarkupCompile.lref
+C:\Users\jward01\Documents\Visual Studio 2015\Projects\ContactManagementApp\ContactManagementApp\bin\Debug\ContactManagementApp.exe
+C:\Users\jward01\Documents\Visual Studio 2015\Projects\ContactManagementApp\ContactManagementApp\bin\Debug\ContactManagementApp.pdb
+C:\Users\jward01\Documents\Visual Studio 2015\Projects\ContactManagementApp\ContactManagementApp\obj\Debug\MainWindow.baml
+C:\Users\jward01\Documents\Visual Studio 2015\Projects\ContactManagementApp\ContactManagementApp\obj\Debug\ContactManagementApp.g.resources
+C:\Users\jward01\Documents\Visual Studio 2015\Projects\ContactManagementApp\ContactManagementApp\obj\Debug\ContactManagementApp.Properties.Resources.resources
+C:\Users\jward01\Documents\Visual Studio 2015\Projects\ContactManagementApp\ContactManagementApp\obj\Debug\ContactManagementApp.csproj.GenerateResource.Cache
+C:\Users\jward01\Documents\Visual Studio 2015\Projects\ContactManagementApp\ContactManagementApp\obj\Debug\ContactManagementApp.exe
+C:\Users\jward01\Documents\Visual Studio 2015\Projects\ContactManagementApp\ContactManagementApp\obj\Debug\ContactManagementApp.pdb
+C:\Users\jward01\Documents\Visual Studio 2015\Projects\ContactManagementApp\ContactManagementApp\obj\Debug\ConnectedWindow.g.cs
+C:\Users\jward01\Documents\Visual Studio 2015\Projects\ContactManagementApp\ContactManagementApp\obj\Debug\ConnectedWindow.baml
