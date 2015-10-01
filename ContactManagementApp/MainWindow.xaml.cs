@@ -46,6 +46,11 @@ namespace ContactManagementApp
             var window = new ConnectedWindow { Owner = this };
 
             //Load Entry here optional
+            Contact newContact = new Contact();
+
+
+
+            window.LoadEntry(newContact);
 
             //Open Dialog
             window.ShowDialog();

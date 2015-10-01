@@ -10,14 +10,17 @@ namespace ContactManagementApp.Classes
     public class Contact
     {
 
-        //Constructor
-        public Contact(int id)
-        {
-        }
+
        
         //Properties
         public DateTime Birthdate { get; set; }
-        public string FullName { get; set; }
+        public string FullName
+        {
+            get
+            {
+                return FirstName + " " + LastName;
+            }
+        }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string EmailAddress { get; set; }
@@ -28,8 +31,10 @@ namespace ContactManagementApp.Classes
         public string State { get; set; }
         public string Zip { get; set; }
         public int Id { get; set; }
+
+       
     }
 
   
     //methods to manipulate varibles
-}
+}    

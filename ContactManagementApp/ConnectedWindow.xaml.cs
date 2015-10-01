@@ -27,42 +27,71 @@ namespace ContactManagementApp
 
         //Properties
         //Declare new contact
-        private Contact currenctContact;
+        private Contact currentContact;
 
-
-
-        //Prepare Entry to be saved
-        public void LoadEntry(Contact entry)
+       
+       public void LoadEntry(Contact entry)
         {
-            entry = currenctContact;
+           //Save instance to class Varible
+                currentContact = entry;
 
-            entry.Id = ContactService.Contacts.Count + 1;
-            entry.FirstName = textBox_FirstName.Text;
-            entry.LastName = textBox_LastName.Text;
-            entry.EmailAddress = textBox_Email.Text;
-            entry.TelephoneNumber = textBox_TelephoneNumber.Text;
-            entry.Address1 = textBox_Address1.Text;
-            entry.Address2 = textBox_Address2.Text;
-            entry.City = textBox_City.Text;
-            entry.Zip = textBox_Zip.Text;
-            entry.Birthdate = DateTime.Parse(textBox_DOB.Text);
+            //Load user interface to entry that is passed in
+            textBox_FirstName.Text = entry.FirstName;
+            textBox_LastName.Text = entry.LastName;
+            textBox_Address1.Text = entry.Address1;
+            textBox_Address2.Text = entry.Address2;
+            textBox_City.Text = entry.City;
+            textBox_Email.Text = entry.EmailAddress;
+            textBox_State.Text = entry.State;
+            textBox_TelephoneNumber.Text = entry.State;
+            textBox_Zip.Text = entry.State;
+            
+
+            textBox_DOB.Text = entry.Birthdate.ToShortDateString();
+        }
+
+        public void saveEntry(Contact entry)
+        {
+            entry = currentContact;
+
+         
+
+                 
         }
 
         //Save Button Click
         private void button_Save_Click(object sender, RoutedEventArgs e)
         {
-            LoadEntry(currenctContact);
-           SaveEntry(currenctContact);
+            
+            SaveEntry(currentContact);
 
         }
 
         private void SaveEntry(Contact entry)
         {
-            entry = currenctContact;
+           // string date = DateTime.Parse(textBox_DOB.Text).ToShortDateString();
+
+            currentContact = entry;
+
+            entry.Address1 = textBox_Address1.Text;
+            entry.Address2 = textBox_Address2.Text;
+            entry.Birthdate = DateTime.Parse(textBox_DOB.Text);
+            entry.City = textBox_City.Text;
+            entry.EmailAddress = textBox_Email.Text;
+            entry.FirstName = textBox_FirstName.Text;
+            entry.LastName = textBox_LastName.Text;
+            entry.State = textBox_State.Text;
+            entry.TelephoneNumber = textBox_TelephoneNumber.Text;
+            entry.Zip = textBox_Zip.Text;
+
 
 
             //Add validation later to not rewrite on ID's
             ContactService.Add(entry);
+
+            //Close Window
+            Close();
+
         }
     }
 }

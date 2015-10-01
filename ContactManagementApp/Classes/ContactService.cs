@@ -9,9 +9,11 @@ namespace ContactManagementApp.Classes
 {
     class ContactService
     {
+        
 
         //Properties
         public static ObservableCollection<Contact> Contacts = new ObservableCollection<Contact>();
+        
 
         //Methods
         public static Contact GetById(int id)
