@@ -7,7 +7,11 @@
         mc:Ignorable="d"
         Title="ConnectedWindow" Height="527.113" Width="647.535">
     <Grid Margin="0,0,19,10">
-        <Grid Margin="0,-1,18,10">
+        <Grid Margin="10,10,-13,-1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="61*"/>
+                <ColumnDefinition Width="90*"/>
+            </Grid.ColumnDefinitions>
             <Label x:Name="label_FirstName" Content="First Name:" HorizontalAlignment="Left" Margin="23,24,0,0" VerticalAlignment="Top"/>
             <TextBox x:Name="textBox_FirstName" HorizontalAlignment="Left" Height="24" Margin="23,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="107"/>
             <Label x:Name="label_FirstName_Copy" Content="Last Name:" HorizontalAlignment="Left" Margin="23,89,0,0" VerticalAlignment="Top"/>
@@ -16,19 +20,29 @@
             <TextBox x:Name="textBox_Email" HorizontalAlignment="Left" Height="24" Margin="23,189,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="107"/>
             <Label x:Name="label_FirstName_Copy2" Content="Telephone Number:" HorizontalAlignment="Left" Margin="23,232,0,0" VerticalAlignment="Top" Width="119"/>
             <TextBox x:Name="textBox_TelephoneNumber" HorizontalAlignment="Left" Height="24" Margin="23,258,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="107"/>
-            <Label x:Name="label_FirstName_Copy3" Content="State" HorizontalAlignment="Left" Margin="215,163,0,0" VerticalAlignment="Top"/>
-            <TextBox x:Name="textBox_State" HorizontalAlignment="Left" Height="24" Margin="215,189,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="107"/>
-            <Label x:Name="label_FirstName_Copy4" Content="Zip:" HorizontalAlignment="Left" Margin="379,163,0,0" VerticalAlignment="Top"/>
-            <TextBox x:Name="textBox_Zip" HorizontalAlignment="Left" Height="24" Margin="379,189,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="107"/>
-            <Label x:Name="label_FirstName_Copy5" Content="Address 1:" HorizontalAlignment="Left" Margin="215,34,0,0" VerticalAlignment="Top"/>
-            <TextBox x:Name="textBox_Address1" HorizontalAlignment="Left" Height="24" Margin="215,60,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="107"/>
-            <Label x:Name="label_FirstName_Copy6" Content="Address 2:" HorizontalAlignment="Left" Margin="215,99,0,0" VerticalAlignment="Top"/>
-            <TextBox x:Name="textBox_Address2" HorizontalAlignment="Left" Height="24" Margin="215,125,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="107"/>
-            <Button x:Name="button_Save" Content="Save" HorizontalAlignment="Left" Height="45" Margin="291,258,0,0" VerticalAlignment="Top" Width="100" Click="button_Save_Click"/>
-            <Label x:Name="label" Content="City:" HorizontalAlignment="Left" Height="24" Margin="391,89,0,0" VerticalAlignment="Top" Width="96"/>
-            <TextBox x:Name="textBox_City" HorizontalAlignment="Left" Height="23" Margin="391,113,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+            <Label x:Name="label_FirstName_Copy3" Content="State" HorizontalAlignment="Left" Margin="215,163,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+            <TextBox x:Name="textBox_State" HorizontalAlignment="Left" Height="24" Margin="215,189,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="107" Grid.ColumnSpan="2"/>
+            <Label x:Name="label_FirstName_Copy4" Content="Zip:" HorizontalAlignment="Left" Margin="135.5,163,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+            <TextBox x:Name="textBox_Zip" HorizontalAlignment="Left" Height="24" Margin="135.5,189,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="107" Grid.Column="1"/>
+            <Label x:Name="label_FirstName_Copy5" Content="Address 1:" HorizontalAlignment="Left" Margin="215,34,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+            <TextBox x:Name="textBox_Address1" HorizontalAlignment="Left" Height="24" Margin="215,60,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="107" Grid.ColumnSpan="2"/>
+            <Label x:Name="label_FirstName_Copy6" Content="Address 2:" HorizontalAlignment="Left" Margin="215,99,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+            <TextBox x:Name="textBox_Address2" HorizontalAlignment="Left" Height="24" Margin="215,125,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="107" Grid.ColumnSpan="2"/>
+            <Button x:Name="button_Save" Content="Save" HorizontalAlignment="Left" Height="45" Margin="47.5,258,0,0" VerticalAlignment="Top" Width="100" Click="button_Save_Click" Grid.Column="1"/>
+            <Label x:Name="label" Content="City:" HorizontalAlignment="Left" Height="24" Margin="147.5,89,0,0" VerticalAlignment="Top" Width="96" Grid.Column="1"/>
+            <TextBox x:Name="textBox_City" HorizontalAlignment="Left" Height="23" Margin="147.5,113,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
             <Label x:Name="label1" Content="DOB:" HorizontalAlignment="Left" Height="33" Margin="87,327,0,0" VerticalAlignment="Top" Width="98"/>
             <TextBox x:Name="textBox_DOB" HorizontalAlignment="Left" Height="24" Margin="87,360,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="107"/>
+            <Menu  x:Name="menu" Background="CornflowerBlue" HorizontalAlignment="Left" Height="27" VerticalAlignment="Top" Width="624" Grid.ColumnSpan="2" Margin="0,-8,0,0">
+                <MenuItem Header="File" Height="28" Width="606">
+                    <MenuItem x:Name="MenuItem_New" Header="New" Click="MenuItem_New_Click"/>
+                    <MenuItem x:Name="MenuItem_Open" Header="Open"  Click="MenuItem_Open_Click"/>
+                    <MenuItem x:Name="MenuItem_Save" Header="Save" Click="MenuItem_Save_Click"/>
+                    <MenuItem x:Name="MenuItem_SaveAs" Header="Save As..." Click="MenuItem_SaveAs_Click"/>
+                    <MenuItem x:Name="MenuItem_Print" Header="Print" Click="MenuItem_Print_Click"/>
+                    <MenuItem x:Name="MenutItem_Exit" Header="Exit" Click="MenutItem_Exit_Click"/>
+                </MenuItem>
+            </Menu>
         </Grid>
     </Grid>
 </Window>

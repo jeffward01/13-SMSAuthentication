@@ -51,15 +51,6 @@ namespace ContactManagementApp
             textBox_DOB.Text = entry.Birthdate.ToShortDateString();
         }
 
-        public void saveEntry(Contact entry)
-        {
-            entry = currentContact;
-
-         
-
-                 
-        }
-
         //Save Button Click
         private void button_Save_Click(object sender, RoutedEventArgs e)
         {
@@ -68,11 +59,10 @@ namespace ContactManagementApp
 
         }
 
+        //Save Entry || Edit mode Bool
         private void SaveEntry(Contact entry)
         {
             // string date = DateTime.Parse(textBox_DOB.Text).ToShortDateString();
-
-
 
             currentContact = entry;
 
@@ -87,9 +77,8 @@ namespace ContactManagementApp
             entry.TelephoneNumber = textBox_TelephoneNumber.Text;
             entry.Zip = textBox_Zip.Text;
 
-
-
             //Add validation later to not rewrite on ID's
+            //If in Editmode, Refresh
             if (IsEditMode == true)
             {
                 // get a reference to the main window
@@ -99,14 +88,43 @@ namespace ContactManagementApp
                 // trigger a refresh
                 mainwindow.dataGrid_ContactList.Items.Refresh();
             }
+            //If not in edit Mode, add new entry
             else
             {
                 ContactService.Add(entry);
             }
-            
-
             //Close Window
             Close();
+
+        }
+
+        private void MenuItem_New_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MenuItem_Open_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MenuItem_Save_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MenuItem_SaveAs_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MenuItem_Print_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MenutItem_Exit_Click(object sender, RoutedEventArgs e)
+        {
 
         }
     }

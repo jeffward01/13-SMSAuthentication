@@ -9,8 +9,6 @@ namespace ContactManagementApp.Classes
 {
     class ContactService
     {
-        
-
         //Properties
         public static ObservableCollection<Contact> Contacts = new ObservableCollection<Contact>();
         public int IdCount = Contacts.Count + 1;
@@ -30,9 +28,7 @@ namespace ContactManagementApp.Classes
         {
             if (c != null)
             {
-
                 Contacts.Remove(c);
-
             }
         }
 
@@ -43,19 +39,6 @@ namespace ContactManagementApp.Classes
                 e.Id = ContactService.Contacts.Count + 1;
                 Contacts.Add(e);
             }
-
-        }
-
-        //dont need
-        public static void Replace(Contact e)
-        {
-            if(e != null)
-            {
-
-
-            }
-
-        }
-       
+        }      
     }
 }
