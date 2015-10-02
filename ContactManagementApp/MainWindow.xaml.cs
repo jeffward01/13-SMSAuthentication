@@ -1,6 +1,9 @@
 ﻿using ContactManagementApp.Classes;
+using Microsoft.Win32;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -148,14 +151,16 @@ namespace ContactManagementApp
 
         }
 
+        //Menu Item || Save AS
         private void MainPage_MenuItem_SaveAs_Click(object sender, RoutedEventArgs e)
         {
-
+            OpenSaveAs();
         }
 
+        //Menu Item || Printer
         private void MainPage_MenuItem_Print_Click(object sender, RoutedEventArgs e)
         {
-
+            SendToPrint();
         }
 
         //Menu Item Exit Button
@@ -170,6 +175,100 @@ namespace ContactManagementApp
             return;
         }
 
+
+        //Print Function
+        public void SendToPrint()
+        {
+
+            try
+            {
+
+                PrintDialog printdialog = new PrintDialog();
+                printdialog.ShowDialog();
+            }
+            catch(Exception)
+            {
+                MessageBox.Show("An error has occured, please contact system admin");
+
+            }
+        }
       
+
+        //Open SaveAs Code
+        public void OpenSaveAs()
+        {
+            //Opens Save File Dialog box
+            SaveFileDialog savefiledialog1 = new SaveFileDialog();
+
+            //only allows .txt files to be saved
+            savefiledialog1.Filter = "Text Files|*.txt";
+
+            //User Choice to act with save Dialog
+            bool? saveFileAs = savefiledialog1.ShowDialog();
+
+            //If User does press Save
+            if(saveFileAs == true)
+            {
+                //File name/Path of user choice
+                string fileNameNew = savefiledialog1.FileName;
+
+                //Save file Path ro varible
+                filePath = fileNameNew;
+
+                //change label of top bar
+                //Example of instatnation
+                FileInfo fi = new FileInfo(savefiledialog1.FileName);
+                string text = fi.Name;
+
+
+                //Save Contents to a string
+                string myContents = Newtonsoft.Json.JsonConvert.SerializeObject(ContactList, Formatting.Indented);
+
+                //Writes the contents (text) to the file
+                File.WriteAllText(fileNameNew, myContents);
+
+                //Display File Name
+                // label_fileName.Content = text,
+
+                //change global filename
+                fileName = text;
+            }
+
+            return;
+        }
+
+        //***********Under Construction
+        //Open File Code
+        public void OpenFile()
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+
+            bool? openFile = dialog.ShowDialog();
+
+            if (openFile == true)
+            {
+                //Get the file name the user chose
+                fileName = dialog.FileName;
+
+                //open the file and read the contents into a string
+                string myFile = File.ReadAllText(fileName);
+
+                try
+                {
+                    Contact NewList = JsonConvert.DeserializeObject<Contact>(myFile);
+
+                    ContactList = NewList;
+
+                    //Refresh the DataGrid
+                    dataGrid_ContactList.ItemsSource = null;
+                    dataGrid_ContactList.ItemsSource = ContactService.Contacts;
+
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Error opening file, please contact system Admin");
+                }
+            }
+        }
     }
 }
