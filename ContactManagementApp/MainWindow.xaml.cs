@@ -40,6 +40,8 @@ namespace ContactManagementApp
 
 
         //Methods
+
+            //Add new contact || Edit mode turned off
         public void Button_AddContact(object sender, RoutedEventArgs e)
         {
             //Open Window
@@ -67,6 +69,10 @@ namespace ContactManagementApp
         {
             doubleClickEvent();
         }
+
+
+        //Edit mode turned on
+        //Open edit mode window
         public void doubleClickEvent()
         {
             try
@@ -81,6 +87,8 @@ namespace ContactManagementApp
                 window.LoadEntry(selected);
                 window.ShowDialog();
             }
+
+            //If no selection is made, or error occurs...
             catch(Exception)
             {
                 MessageBox.Show("Please ensure that you have selected a contact to edit.  Contact System Admin of problem persists");
