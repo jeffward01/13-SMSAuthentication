@@ -94,5 +94,42 @@ namespace ContactManagementApp
                 MessageBox.Show("Please ensure that you have selected a contact to edit.  Contact System Admin of problem persists");
             }
         }
+
+
+
+        /// <summary>
+        /// Menu Click Handlers below
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MainPage_MenuItem_New_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MainPage_MenuItem_Open_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MainPage_MenuItem_Save_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MainPage_MenuItem_SaveAs_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MainPage_MenuItem_Print_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MainPage_MenutItem_Exit_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

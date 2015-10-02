@@ -13,16 +13,13 @@
         <Button x:Name="button_Copy1" Content="Delete Selected Contact" HorizontalAlignment="Left" Height="27" Margin="437,152,0,0" VerticalAlignment="Top" Width="143" RenderTransformOrigin="0.354,0.815"/>
         <Menu  x:Name="menu" Background="CornflowerBlue" HorizontalAlignment="Left" Height="27" VerticalAlignment="Top" Width="624" Grid.ColumnSpan="2" Margin="0,-8,0,0">
             <MenuItem Header="File" Height="28" Width="606">
-                <MenuItem x:Name="MenuItem_New" Header="New" />
-                <MenuItem x:Name="MenuItem_Open" Header="Open" />
-                <MenuItem x:Name="MenuItem_Save" Header="Save"/>
-                <MenuItem x:Name="MenuItem_SaveAs" Header="Save As..."/>
-                <MenuItem x:Name="MenuItem_Print" Header="Print" />
-                <MenuItem x:Name="MenutItem_Exit" Header="Exit" />
+                <MenuItem x:Name="MainPage_MenuItem_New" Header="New" Click="MainPage_MenuItem_New_Click"/>
+                <MenuItem x:Name="MainPage_MenuItem_Open" Header="Open" Click="MainPage_MenuItem_Open_Click" />
+                <MenuItem x:Name="MainPage_MenuItem_Save" Header="Save" Click="MainPage_MenuItem_Save_Click"/>
+                <MenuItem x:Name="MainPage_MenuItem_SaveAs" Header="Save As..." Click="MainPage_MenuItem_SaveAs_Click"/>
+                <MenuItem x:Name="MainPage_MenuItem_Print" Header="Print"  Click="MainPage_MenuItem_Print_Click"/>
+                <MenuItem x:Name="MainPage_MenutItem_Exit" Header="Exit" Click="MainPage_MenutItem_Exit_Click" />
             </MenuItem>
         </Menu>
-
-
-
     </Grid>
 </Window>
