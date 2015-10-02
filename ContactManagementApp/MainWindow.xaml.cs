@@ -45,36 +45,27 @@ namespace ContactManagementApp
             //Open Window
             var window = new ConnectedWindow { Owner = this };
 
+            window.IsEditMode = false;
+
             //Load Entry here optional
             Contact newContact = new Contact();
-
-
 
             window.LoadEntry(newContact);
 
             //Open Dialog
             window.ShowDialog();
-
-
-
-
-
-
-
-
         }
 
+        //Double Click Hanlder || Turned Off
         private void doubleClickDataGrid(object sender, SelectionChangedEventArgs e)
         {
             doubleClickEvent();
         }
 
+        //Edit Selected Content
         private void button_Edit_Click(object sender, RoutedEventArgs e)
         {
-
-
             doubleClickEvent();
-
         }
         public void doubleClickEvent()
         {
@@ -86,34 +77,14 @@ namespace ContactManagementApp
 
                 //Open Window
                 var window = new ConnectedWindow { Owner = this };
+                window.IsEditMode = true;
                 window.LoadEntry(selected);
                 window.ShowDialog();
             }
             catch(Exception)
             {
                 MessageBox.Show("Please ensure that you have selected a contact to edit.  Contact System Admin of problem persists");
-
             }
         }
-        public void openEditEntry(Contact entry)
-        {
-            var window = new ConnectedWindow { Owner = this };
-            window.LoadEntry(entry);
-            window.ShowDialog();
-
-
-
-        }
-        public void openWindow()
-        {
-
-
-
-        }
-
-    
     }
-
-
-
 }

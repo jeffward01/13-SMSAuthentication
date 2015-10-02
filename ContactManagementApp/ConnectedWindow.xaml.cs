@@ -28,6 +28,7 @@ namespace ContactManagementApp
         //Properties
         //Declare new contact
         private Contact currentContact;
+        public bool IsEditMode = true;
 
        
        public void LoadEntry(Contact entry)
@@ -69,7 +70,9 @@ namespace ContactManagementApp
 
         private void SaveEntry(Contact entry)
         {
-           // string date = DateTime.Parse(textBox_DOB.Text).ToShortDateString();
+            // string date = DateTime.Parse(textBox_DOB.Text).ToShortDateString();
+
+
 
             currentContact = entry;
 
@@ -87,7 +90,20 @@ namespace ContactManagementApp
 
 
             //Add validation later to not rewrite on ID's
-            ContactService.Add(entry);
+            if (IsEditMode == true)
+            {
+                // get a reference to the main window
+                var mainwindow = (MainWindow)Owner;
+
+
+                // trigger a refresh
+                mainwindow.dataGrid_ContactList.Items.Refresh();
+            }
+            else
+            {
+                ContactService.Add(entry);
+            }
+            
 
             //Close Window
             Close();

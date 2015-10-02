@@ -13,7 +13,7 @@ namespace ContactManagementApp.Classes
 
         //Properties
         public static ObservableCollection<Contact> Contacts = new ObservableCollection<Contact>();
-        
+        public int IdCount = Contacts.Count + 1;
 
         //Methods
         public static Contact GetById(int id)
@@ -40,7 +40,19 @@ namespace ContactManagementApp.Classes
         {
             if (e != null)
             {
+                e.Id = ContactService.Contacts.Count + 1;
                 Contacts.Add(e);
+            }
+
+        }
+
+        //dont need
+        public static void Replace(Contact e)
+        {
+            if(e != null)
+            {
+
+
             }
 
         }
