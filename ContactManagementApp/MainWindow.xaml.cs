@@ -35,13 +35,12 @@ namespace ContactManagementApp
             //Initialize Load name in menu bar
            //// Label_fileName.Content = fileName;
         }
-
         //Properties
         public string fileName = "Untitled";
         public string filePath;
         private Contact ContactList;
 
-
+       
         //Methods
 
             //Add new contact || Edit mode turned off
@@ -65,14 +64,12 @@ namespace ContactManagementApp
         {
             try
             {
-
                 //Cast
                 //Create a refrence Object, save the refrence object as the selected item
                 Contact selected = (Contact)dataGrid_ContactList.SelectedItem;
 
                 if (selected == null)
                 {
-
                     MessageBox.Show("Please select a contact to delete from the grid");
                     return;
                 }
@@ -80,7 +77,6 @@ namespace ContactManagementApp
                 if(result == MessageBoxResult.Yes)
                 {
                     ContactService.Delete(selected);
-
                 }
 
                 return;
@@ -88,7 +84,6 @@ namespace ContactManagementApp
             catch (Exception)
             {
                 MessageBox.Show("Make sure you have selected an Item.  For any other errors contact System Admin");
-
             }
         }
 
@@ -141,14 +136,74 @@ namespace ContactManagementApp
 
         }
 
+        //Experimental Open Method
         private void MainPage_MenuItem_Open_Click(object sender, RoutedEventArgs e)
         {
 
+            //OPen open file dialog
+            OpenFileDialog dialog = new OpenFileDialog();
+
+            bool? openFile = dialog.ShowDialog();
+
+            if(openFile == true)
+            {
+                //Get the name of the file selected by user
+                fileName = dialog.FileName;
+
+                //open the file and read the contents into a string
+                string myFile = File.ReadAllText(fileName);
+
+                try
+                {
+                    //Save file from a JSON object into a ContactService Class
+                    Contact newContactList = JsonConvert.DeserializeObject<Contact>(myFile);
+
+                    //Set newContactList as THE new ContactList
+                    ContactList = newContactList;
+
+                    //Refresh grid
+                    dataGrid_ContactList.ItemsSource = null;
+                }
+                catch
+                {
+                    MessageBox.Show("error opening file, please contact sysytem ADMIN");
+
+                }
+
+            }
+
+
         }
+
+    
 
         private void MainPage_MenuItem_Save_Click(object sender, RoutedEventArgs e)
         {
+            //If file name has not been rewritten
+           if(fileName == "Untitled")
+            {
+                OpenSaveAs();
+            }
 
+            try
+            {
+
+                //Check contents of FileName
+                string filenameConetents = File.ReadAllText(filePath);
+
+                //check contents of current contactlist
+                string myConents = Newtonsoft.Json.JsonConvert.SerializeObject(ContactList, Formatting.Indented);
+
+                if (filenameConetents == myConents)
+                {
+                    return;
+                }
+                File.WriteAllText(filePath, myConents);
+            }
+           catch(Exception)
+            {
+                MessageBox.Show("Error occured while saving.  Please use SAVE AS and contact Sysytem Admin");
+            }
         }
 
         //Menu Item || Save AS
@@ -170,7 +225,6 @@ namespace ContactManagementApp
             if (result == MessageBoxResult.Yes)
             {
                 Environment.Exit(0);
-
             }
             return;
         }
@@ -182,14 +236,12 @@ namespace ContactManagementApp
 
             try
             {
-
                 PrintDialog printdialog = new PrintDialog();
                 printdialog.ShowDialog();
             }
             catch(Exception)
             {
                 MessageBox.Show("An error has occured, please contact system admin");
-
             }
         }
       
@@ -233,7 +285,6 @@ namespace ContactManagementApp
                 //change global filename
                 fileName = text;
             }
-
             return;
         }
 
@@ -262,7 +313,6 @@ namespace ContactManagementApp
                     //Refresh the DataGrid
                     dataGrid_ContactList.ItemsSource = null;
                     dataGrid_ContactList.ItemsSource = ContactService.Contacts;
-
                 }
                 catch (Exception)
                 {

@@ -12,6 +12,9 @@ namespace ContactManagementApp.Classes
         //Properties
         public static ObservableCollection<Contact> Contacts = new ObservableCollection<Contact>();
         public int IdCount = Contacts.Count + 1;
+        //Added Category
+        public string Category;
+
 
         //Methods
         public static Contact GetById(int id)

@@ -35,14 +35,18 @@
             <TextBox x:Name="textBox_DOB" HorizontalAlignment="Left" Height="24" Margin="87,360,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="107"/>
             <Menu  x:Name="menu" Background="CornflowerBlue" HorizontalAlignment="Left" Height="27" VerticalAlignment="Top" Width="624" Grid.ColumnSpan="2" Margin="0,-8,0,0">
                 <MenuItem Header="File" Height="28" Width="606">
-                    <MenuItem x:Name="MenuItem_New" Header="New" Click="MenuItem_New_Click"/>
-                    <MenuItem x:Name="MenuItem_Open" Header="Open"  Click="MenuItem_Open_Click"/>
+
                     <MenuItem x:Name="MenuItem_Save" Header="Save" Click="MenuItem_Save_Click"/>
                     <MenuItem x:Name="MenuItem_SaveAs" Header="Save As..." Click="MenuItem_SaveAs_Click"/>
                     <MenuItem x:Name="MenuItem_Print" Header="Print" Click="MenuItem_Print_Click"/>
                     <MenuItem x:Name="MenutItem_Exit" Header="Exit" Click="MenutItem_Exit_Click"/>
                 </MenuItem>
             </Menu>
+            <Label x:Name="ConnectedWindow_Label_Categories" Content="Add A Category:" HorizontalAlignment="Left" Height="28" Margin="64,344,0,0" VerticalAlignment="Top" Width="126" Grid.Column="1"/>
+            <RadioButton x:Name="ConnectedWinow_radioButton_None" Content="None" HorizontalAlignment="Left" Height="16" Margin="32,372,0,0" VerticalAlignment="Top" Width="56" Grid.Column="1"/>
+            <RadioButton x:Name="ConnectedWindow_radioButton_Work" Content="Work" HorizontalAlignment="Left" Height="16" Margin="118,372,0,0" VerticalAlignment="Top" Width="62" Grid.Column="1"/>
+            <RadioButton x:Name="ConnectedWindow_radioButton_Personal" Content="Personal" HorizontalAlignment="Left" Height="16" Margin="194,372,0,0" VerticalAlignment="Top" Width="70" Grid.Column="1"/>
+            <RadioButton x:Name="ConnectedWindow_radioButton_General" Content="General" HorizontalAlignment="Left" Height="16" Margin="270,372,0,0" VerticalAlignment="Top" Width="70" Grid.Column="1"/>
         </Grid>
     </Grid>
 </Window>
