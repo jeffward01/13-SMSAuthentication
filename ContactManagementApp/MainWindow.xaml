@@ -10,7 +10,7 @@
         <DataGrid x:Name="dataGrid_ContactList" HorizontalAlignment="Left" Height="219" Margin="31,184,0,0" VerticalAlignment="Top" Width="435" CanUserAddRows="False" IsReadOnly="True"/>
         <Button x:Name="button" Content="Add New Contact" HorizontalAlignment="Left" Height="27" Margin="117,152,0,0" VerticalAlignment="Top" Width="136" Click="Button_AddContact"/>
         <Button x:Name="button_Copy" Content="Edit Selected Contact" HorizontalAlignment="Left" Height="27" Margin="276,152,0,0" VerticalAlignment="Top" Width="130" Click="button_Edit_Click"/>
-        <Button x:Name="button_Copy1" Content="Delete Selected Contact" HorizontalAlignment="Left" Height="27" Margin="437,152,0,0" VerticalAlignment="Top" Width="143" RenderTransformOrigin="0.354,0.815"/>
+        <Button x:Name="button_Copy1" Content="Delete Selected Contact" HorizontalAlignment="Left" Height="27" Margin="437,152,0,0" VerticalAlignment="Top" Width="143" RenderTransformOrigin="0.354,0.815" Click="Mainpage_DeleteButton_Click"/>
         <Menu  x:Name="menu" Background="CornflowerBlue" HorizontalAlignment="Left" Height="27" VerticalAlignment="Top" Width="624" Grid.ColumnSpan="2" Margin="0,-8,0,0">
             <MenuItem Header="File" Height="28" Width="606">
                 <MenuItem x:Name="MainPage_MenuItem_New" Header="New" Click="MainPage_MenuItem_New_Click"/>

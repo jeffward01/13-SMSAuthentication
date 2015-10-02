@@ -58,6 +58,37 @@ namespace ContactManagementApp
             window.ShowDialog();
         }
 
+        private void Mainpage_DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+
+                //Cast
+                //Create a refrence Object, save the refrence object as the selected item
+                Contact selected = (Contact)dataGrid_ContactList.SelectedItem;
+
+                if (selected == null)
+                {
+
+                    MessageBox.Show("Please select a contact to delete from the grid");
+                    return;
+                }
+                MessageBoxResult result = MessageBox.Show("Are you sure you want to Erase this entry?", "Erase Entry", MessageBoxButton.YesNo);
+                if(result == MessageBoxResult.Yes)
+                {
+                    ContactService.Delete(selected);
+
+                }
+
+                return;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Make sure you have selected an Item.  For any other errors contact System Admin");
+
+            }
+        }
+
         //Double Click Hanlder || Turned Off
         private void doubleClickDataGrid(object sender, SelectionChangedEventArgs e)
         {
@@ -127,9 +158,18 @@ namespace ContactManagementApp
 
         }
 
+        //Menu Item Exit Button
         private void MainPage_MenutItem_Exit_Click(object sender, RoutedEventArgs e)
         {
+            MessageBoxResult result = MessageBox.Show("Are you sure you want to Quit?", "Exit Prompt", MessageBoxButton.YesNo);
+            if (result == MessageBoxResult.Yes)
+            {
+                Environment.Exit(0);
 
+            }
+            return;
         }
+
+      
     }
 }
