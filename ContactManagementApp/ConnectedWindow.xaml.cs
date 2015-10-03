@@ -22,12 +22,12 @@ namespace ContactManagementApp
     /// <summary>
     /// Interaction logic for ConnectedWindow.xaml
     /// </summary>
-    public partial class ConnectedWindow : Window 
+    public partial class ConnectedWindow : Window
     {
         public ConnectedWindow()
         {
             InitializeComponent();
-            
+
         }
 
         //Properties
@@ -57,9 +57,9 @@ namespace ContactManagementApp
             textBox_City.Text = entry.City;
             textBox_Email.Text = entry.EmailAddress;
             textBox_State.Text = entry.State;
-            textBox_TelephoneNumber.Text = entry.State;
+            textBox_TelephoneNumber.Text = entry.TelephoneNumber;
             textBox_Zip.Text = entry.State;
-            textBox_DOB.Text = entry.Birthdate; 
+            textBox_DOB.Text = entry.Birthdate;
 
 
             //get category from Object
@@ -105,11 +105,11 @@ namespace ContactManagementApp
             }
         }
 
-        
+
         //Save Button Click
         private void button_Save_Click(object sender, RoutedEventArgs e)
         {
-            
+
             SaveEntry(currentContact);
 
         }
@@ -117,7 +117,7 @@ namespace ContactManagementApp
         //Save Entry || Edit mode Bool
         private void SaveEntry(Contact entry)
         {
-         
+
 
             //Verify Date is in the correct format
 
@@ -222,7 +222,7 @@ namespace ContactManagementApp
                 MessageBox.Show("Error occured while saving.  Please use SAVE AS and contact Sysytem Admin");
             }
         }
-    
+
 
         private void MenuItem_SaveAs_Click(object sender, RoutedEventArgs e)
         {
@@ -308,6 +308,8 @@ namespace ContactManagementApp
         {
             Regex regex = new Regex("[^0-9/-]+");
             e.Handled = regex.IsMatch(e.Text);
+            textBox_DOB.MaxLength = 10;
+            textBox_TelephoneNumber.MaxLength = 15;
         }
 
         //Clear Textboxes on Focus
@@ -317,8 +319,16 @@ namespace ContactManagementApp
             textbox.Text = String.Empty;
         }
 
+        //Adding Formatting to Telephone Number
+        private void textBox_TelephoneNumber_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string myInput = textBox_TelephoneNumber.Text;
+          textBox_TelephoneNumber.Text =  Regex.Replace(myInput, @"(\d{3})(\d{3})(\d{4})", "$1-$2-$3");
 
+        }
 
+      
 
+      
     }
 }

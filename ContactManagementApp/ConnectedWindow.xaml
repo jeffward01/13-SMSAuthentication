@@ -19,7 +19,7 @@
             <Label x:Name="label_FirstName_Copy1" Content="Email Address:" HorizontalAlignment="Left" Margin="23,158,0,0" VerticalAlignment="Top"/>
             <TextBox x:Name="textBox_Email" HorizontalAlignment="Left" Height="24" Margin="23,189,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="107"/>
             <Label x:Name="label_FirstName_Copy2" Content="Telephone Number:" HorizontalAlignment="Left" Margin="23,232,0,0" VerticalAlignment="Top" Width="119"/>
-            <TextBox x:Name="textBox_TelephoneNumber" HorizontalAlignment="Left" Height="24" Margin="23,258,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="107" PreviewTextInput="textBox_DOB_PreviewTextInput"/>
+            <TextBox x:Name="textBox_TelephoneNumber" HorizontalAlignment="Left" Height="24" Margin="23,258,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="107" PreviewTextInput="textBox_DOB_PreviewTextInput" TextChanged="textBox_TelephoneNumber_TextChanged"/>
             <Label x:Name="label_FirstName_Copy3" Content="State" HorizontalAlignment="Left" Margin="215,163,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
             <TextBox x:Name="textBox_State" HorizontalAlignment="Left" Height="24" Margin="215,189,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="107" Grid.ColumnSpan="2"/>
             <Label x:Name="label_FirstName_Copy4" Content="Zip:" HorizontalAlignment="Left" Margin="135.5,163,0,0" VerticalAlignment="Top" Grid.Column="1"/>
