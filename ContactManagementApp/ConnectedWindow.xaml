@@ -51,6 +51,7 @@
             <Label x:Name="label3" Content="Required" HorizontalAlignment="Left" Height="29" Margin="98,22,0,0" VerticalAlignment="Top" Width="72" Foreground="Red" ForceCursor="True"/>
             <Label x:Name="label3_Copy" Content="Required" HorizontalAlignment="Left" Height="29" Margin="98,89,0,0" VerticalAlignment="Top" Width="72" Foreground="Red" ForceCursor="True" RenderTransformOrigin="0.507,1.845"/>
             <Label x:Name="label3_Copy1" Content="Required" HorizontalAlignment="Left" Height="29" Margin="130,232,0,0" VerticalAlignment="Top" Width="72" Foreground="Red" ForceCursor="True"/>
+            <ComboBox x:Name="ConnectedWindow_ComboBox_State" Grid.Column="1" HorizontalAlignment="Left" Margin="190,53,0,0" VerticalAlignment="Top" Width="120" AllowDrop="True" Loaded="ConnectedWindow_ComboBox_State_Loaded" SelectionChanged="ConnectedWindow_ComboBox_State_SelectionChanged" SelectedValuePath="Content"/>
         </Grid>
     </Grid>
 </Window>

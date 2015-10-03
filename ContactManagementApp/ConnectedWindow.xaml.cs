@@ -56,9 +56,21 @@ namespace ContactManagementApp
             textBox_Address2.Text = entry.Address2;
             textBox_City.Text = entry.City;
             textBox_Email.Text = entry.EmailAddress;
+            //Load State info
+
+            if (entry.State == null)
+            {
+                ConnectedWindow_ComboBox_State.SelectedIndex = 0;
+            }
+            else if (entry.State != null)
+            {
+                
+                ConnectedWindow_ComboBox_State.SelectedItem = entry.State;
+                MessageBox.Show(entry.State.ToString());
+            }
             textBox_State.Text = entry.State;
             textBox_TelephoneNumber.Text = entry.TelephoneNumber;
-            textBox_Zip.Text = entry.State;
+            textBox_Zip.Text = entry.Zip;
             textBox_DOB.Text = entry.Birthdate;
 
 
@@ -138,7 +150,8 @@ namespace ContactManagementApp
             entry.EmailAddress = textBox_Email.Text;
             entry.FirstName = textBox_FirstName.Text;
             entry.LastName = textBox_LastName.Text;
-            entry.State = textBox_State.Text;
+            //Get State
+            entry.State = ConnectedWindow_ComboBox_State.SelectedItem.ToString();
             entry.TelephoneNumber = textBox_TelephoneNumber.Text;
             entry.Zip = textBox_Zip.Text;
 
@@ -347,8 +360,85 @@ namespace ContactManagementApp
            
 
         }
-      
 
-      
+        //State Picker ComboBox Load options
+        private void ConnectedWindow_ComboBox_State_Loaded(object sender, RoutedEventArgs e)
+        {
+            // ... A List.
+            List<string> states = new List<string>();
+            states.Add("Pick your State...");
+            states.Add("AL");
+            states.Add("AK");
+            states.Add("AZ");
+            states.Add("AR");
+            states.Add("CA");
+            states.Add("CO");
+            states.Add("CT");
+            states.Add("DE");
+            states.Add("FL");
+            states.Add("GA");
+            states.Add("HI");
+            states.Add("ID");
+            states.Add("IL");
+            states.Add("IN");
+            states.Add("IA");
+            states.Add("KS");
+            states.Add("KY");
+            states.Add("LA");
+            states.Add("ME");
+            states.Add("MD");
+            states.Add("MA");
+            states.Add("MI");
+            states.Add("MN");
+            states.Add("MS");
+            states.Add("MO");
+            states.Add("MT");
+            states.Add("NE");
+            states.Add("NV");
+            states.Add("NH");
+            states.Add("NJ");
+            states.Add("NM");
+            states.Add("NY");
+            states.Add("NC");
+            states.Add("ND");
+            states.Add("OH");
+            states.Add("OK");
+            states.Add("OR");
+            states.Add("PA");
+            states.Add("RI");
+            states.Add("SC");
+            states.Add("SD");
+            states.Add("TN");
+            states.Add("TX");
+            states.Add("UT");
+            states.Add("VT");
+            states.Add("VA");
+            states.Add("WA");
+            states.Add("WV");
+            states.Add("WI");
+            states.Add("WY");
+            
+
+
+            // ... Get the ComboBox reference.
+            var comboBox = sender as ComboBox;
+
+            // ... Assign the ItemsSource to the List.
+            comboBox.ItemsSource = states;
+
+            // ... Make the first item selected.
+            comboBox.SelectedIndex = 0;
+        }
+
+        //State Picker Combo Box, Select an Option
+        private void ConnectedWindow_ComboBox_State_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            // ... Get the ComboBox.
+            var comboBox = sender as ComboBox;
+
+            // ... Set SelectedItem as Window Title.
+            string value = comboBox.SelectedItem as string;
+            this.Title = "Selected: " + value;
+        }
     }
 }
