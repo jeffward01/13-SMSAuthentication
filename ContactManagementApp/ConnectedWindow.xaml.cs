@@ -119,8 +119,11 @@ namespace ContactManagementApp
         {
 
 
-            //Verify Date is in the correct format
-
+            //Check input on required textboxes
+            if(!checkTextBoxInput())
+            {
+                return;
+            }
 
 
             //Grab input from textboxes
@@ -324,9 +327,26 @@ namespace ContactManagementApp
         {
             string myInput = textBox_TelephoneNumber.Text;
           textBox_TelephoneNumber.Text =  Regex.Replace(myInput, @"(\d{3})(\d{3})(\d{4})", "$1-$2-$3");
-
         }
 
+        //Check require textbox input
+        public bool checkTextBoxInput()
+        {
+           
+                string firstName = textBox_FirstName.Text;
+                string lastName = textBox_LastName.Text;
+                string phone = textBox_TelephoneNumber.Text;
+
+
+                if ((firstName == "" || lastName == "" || phone == ""))
+                {
+                    MessageBox.Show("Please enter the required values in the textboxes");
+                         return false; 
+                }
+            return true;
+           
+
+        }
       
 
       
