@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ContactManagementApp"
         mc:Ignorable="d"
-        Title="ConnectedWindow" Height="527.113" Width="647.535">
+        Title="ConnectedWindow" Height="527.113" Width="647.535" Loaded="Window_Loaded">
     <Grid Margin="0,0,19,10">
         <Grid Margin="10,10,-13,-1">
             <Grid.ColumnDefinitions>

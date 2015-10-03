@@ -41,93 +41,91 @@ namespace ContactManagementApp
         public string filePath;
         private Contact ContactList;
         public string myCategory;
+        public string myState;
+
+        public void isLoaded()
+        {
+            // ... A List.
+            List<string> states = new List<string>();
+            states.Add("Pick your State...");
+            states.Add("AL");
+            states.Add("AK");
+            states.Add("AZ");
+            states.Add("AR");
+            states.Add("CA");
+            states.Add("CO");
+            states.Add("CT");
+            states.Add("DE");
+            states.Add("FL");
+            states.Add("GA");
+            states.Add("HI");
+            states.Add("ID");
+            states.Add("IL");
+            states.Add("IN");
+            states.Add("IA");
+            states.Add("KS");
+            states.Add("KY");
+            states.Add("LA");
+            states.Add("ME");
+            states.Add("MD");
+            states.Add("MA");
+            states.Add("MI");
+            states.Add("MN");
+            states.Add("MS");
+            states.Add("MO");
+            states.Add("MT");
+            states.Add("NE");
+            states.Add("NV");
+            states.Add("NH");
+            states.Add("NJ");
+            states.Add("NM");
+            states.Add("NY");
+            states.Add("NC");
+            states.Add("ND");
+            states.Add("OH");
+            states.Add("OK");
+            states.Add("OR");
+            states.Add("PA");
+            states.Add("RI");
+            states.Add("SC");
+            states.Add("SD");
+            states.Add("TN");
+            states.Add("TX");
+            states.Add("UT");
+            states.Add("VT");
+            states.Add("VA");
+            states.Add("WA");
+            states.Add("WV");
+            states.Add("WI");
+            states.Add("WY");
 
 
+
+            // ... Get the ComboBox reference.
+            var comboBox = ConnectedWindow_ComboBox_State;
+
+            // ... Assign the ItemsSource to the List.
+            comboBox.ItemsSource = states;
+
+            // ... Make the first item selected.
+            comboBox.SelectedIndex = 0;
+
+        }
 
         public void LoadEntry(Contact entry)
         {
-            //Save instance to class Varible
             currentContact = entry;
-
-            //Load user interface to entry that is passed in
-            textBox_FirstName.Text = entry.FirstName;
-            textBox_LastName.Text = entry.LastName;
-            textBox_Address1.Text = entry.Address1;
-            textBox_Address2.Text = entry.Address2;
-            textBox_City.Text = entry.City;
-            textBox_Email.Text = entry.EmailAddress;
-            //Load State info
-
-            if (entry.State == null)
-            {
-                ConnectedWindow_ComboBox_State.SelectedIndex = 0;
-            }
-            else if (entry.State != null)
-            {
-                
-                ConnectedWindow_ComboBox_State.SelectedItem = entry.State;
-                MessageBox.Show(entry.State.ToString());
-            }
-            textBox_State.Text = entry.State;
-            textBox_TelephoneNumber.Text = entry.TelephoneNumber;
-            textBox_Zip.Text = entry.Zip;
-            textBox_DOB.Text = entry.Birthdate;
-
-
-            //get category from Object
-            //If entry catagory has a value
-            if (entry.Category == null)
-            {
-                entry.Category = "None";
-                ConnectedWinow_radioButton_None.IsChecked = true;
-            }
-
-            if (entry.Category != null)
-            {
-
-                string contactCategory = entry.Category;
-
-
-                string generalCategory = "General";
-                string noneCategory = "None";
-                string workCategoy = "Work";
-                string personalCategory = "Personal";
-
-                if (generalCategory == entry.Category)
-                {
-                    ConnectedWindow_radioButton_General.IsChecked = true;
-                    return;
-                }
-                else if (noneCategory == entry.Category)
-                {
-                    ConnectedWinow_radioButton_None.IsChecked = true;
-                    return;
-                }
-                else if (workCategoy == entry.Category)
-                {
-                    ConnectedWindow_radioButton_Work.IsChecked = true;
-                    return;
-                }
-                else if (personalCategory == entry.Category)
-                {
-                    ConnectedWindow_radioButton_Personal.IsChecked = true;
-                    return;
-                }
-                ConnectedWinow_radioButton_None.IsChecked = true;
-            }
         }
 
 
         //Save Button Click
         private void button_Save_Click(object sender, RoutedEventArgs e)
         {
-
-            SaveEntry(currentContact);
-
+            SavecurrentContact(currentContact);
         }
 
-        //Save Entry || Edit mode Bool
-        private void SaveEntry(Contact entry)
+        //Save currentContact || Edit mode Bool
+        private void SavecurrentContact(Contact currentContact)
         {
 
 
@@ -138,22 +136,21 @@ namespace ContactManagementApp
             }
 
 
-            //Grab input from textboxes
-            currentContact = entry;
+            
 
-            entry.Address1 = textBox_Address1.Text;
-            entry.Address2 = textBox_Address2.Text;
+            currentContact.Address1 = textBox_Address1.Text;
+            currentContact.Address2 = textBox_Address2.Text;
 
             //Format Date correctly on Save
-            entry.Birthdate = textBox_DOB.Text.ToString();
-            entry.City = textBox_City.Text;
-            entry.EmailAddress = textBox_Email.Text;
-            entry.FirstName = textBox_FirstName.Text;
-            entry.LastName = textBox_LastName.Text;
+            currentContact.Birthdate = textBox_DOB.Text.ToString();
+            currentContact.City = textBox_City.Text;
+            currentContact.EmailAddress = textBox_Email.Text;
+            currentContact.FirstName = textBox_FirstName.Text;
+            currentContact.LastName = textBox_LastName.Text;
             //Get State
-            entry.State = ConnectedWindow_ComboBox_State.SelectedItem.ToString();
-            entry.TelephoneNumber = textBox_TelephoneNumber.Text;
-            entry.Zip = textBox_Zip.Text;
+            currentContact.State = ConnectedWindow_ComboBox_State.SelectedItem.ToString();
+            currentContact.TelephoneNumber = textBox_TelephoneNumber.Text;
+            currentContact.Zip = textBox_Zip.Text;
 
 
             //Save Category
@@ -161,34 +158,34 @@ namespace ContactManagementApp
             {
 
                 string input = "None";
-                entry.Category = input;
-                MessageBox.Show(entry.Category);
+                currentContact.Category = input;
+                MessageBox.Show(currentContact.Category);
             }
             else if (ConnectedWindow_radioButton_Work.IsChecked == true)
             {
                 string input = "Work";
-                entry.Category = input;
-                MessageBox.Show(entry.Category);
+                currentContact.Category = input;
+                MessageBox.Show(currentContact.Category);
 
             }
             else if (ConnectedWindow_radioButton_General.IsChecked == true)
             {
                 string input = "General";
-                entry.Category = input;
-                MessageBox.Show(entry.Category);
+                currentContact.Category = input;
+                MessageBox.Show(currentContact.Category);
 
             }
             else if (ConnectedWindow_radioButton_Personal.IsChecked == true)
             {
                 string input = "Personal";
-                entry.Category = input;
-                MessageBox.Show(entry.Category);
+                currentContact.Category = input;
+                MessageBox.Show(currentContact.Category);
             }
             else
             {
                 string input = "None";
-                entry.Category = input;
-                MessageBox.Show(entry.Category);
+                currentContact.Category = input;
+                MessageBox.Show(currentContact.Category);
 
             }
             //Save catgory goes above 
@@ -203,10 +200,10 @@ namespace ContactManagementApp
                 // trigger a refresh
                 mainwindow.dataGrid_ContactList.Items.Refresh();
             }
-            //If not in edit Mode, add new entry
+            //If not in edit Mode, add new currentContact
             else
             {
-                ContactService.Add(entry);
+                ContactService.Add(currentContact);
             }
             //Close Window
             Close();
@@ -364,70 +361,7 @@ namespace ContactManagementApp
         //State Picker ComboBox Load options
         private void ConnectedWindow_ComboBox_State_Loaded(object sender, RoutedEventArgs e)
         {
-            // ... A List.
-            List<string> states = new List<string>();
-            states.Add("Pick your State...");
-            states.Add("AL");
-            states.Add("AK");
-            states.Add("AZ");
-            states.Add("AR");
-            states.Add("CA");
-            states.Add("CO");
-            states.Add("CT");
-            states.Add("DE");
-            states.Add("FL");
-            states.Add("GA");
-            states.Add("HI");
-            states.Add("ID");
-            states.Add("IL");
-            states.Add("IN");
-            states.Add("IA");
-            states.Add("KS");
-            states.Add("KY");
-            states.Add("LA");
-            states.Add("ME");
-            states.Add("MD");
-            states.Add("MA");
-            states.Add("MI");
-            states.Add("MN");
-            states.Add("MS");
-            states.Add("MO");
-            states.Add("MT");
-            states.Add("NE");
-            states.Add("NV");
-            states.Add("NH");
-            states.Add("NJ");
-            states.Add("NM");
-            states.Add("NY");
-            states.Add("NC");
-            states.Add("ND");
-            states.Add("OH");
-            states.Add("OK");
-            states.Add("OR");
-            states.Add("PA");
-            states.Add("RI");
-            states.Add("SC");
-            states.Add("SD");
-            states.Add("TN");
-            states.Add("TX");
-            states.Add("UT");
-            states.Add("VT");
-            states.Add("VA");
-            states.Add("WA");
-            states.Add("WV");
-            states.Add("WI");
-            states.Add("WY");
             
-
-
-            // ... Get the ComboBox reference.
-            var comboBox = sender as ComboBox;
-
-            // ... Assign the ItemsSource to the List.
-            comboBox.ItemsSource = states;
-
-            // ... Make the first item selected.
-            comboBox.SelectedIndex = 0;
         }
 
         //State Picker Combo Box, Select an Option
@@ -439,6 +373,83 @@ namespace ContactManagementApp
             // ... Set SelectedItem as Window Title.
             string value = comboBox.SelectedItem as string;
             this.Title = "Selected: " + value;
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            isLoaded();
+            //Save instance to class Varible
+            
+          
+
+            //Load user interface to currentContact that is passed in
+            textBox_FirstName.Text = currentContact.FirstName;
+            textBox_LastName.Text = currentContact.LastName;
+            textBox_Address1.Text = currentContact.Address1;
+            textBox_Address2.Text = currentContact.Address2;
+            textBox_City.Text = currentContact.City;
+            textBox_Email.Text = currentContact.EmailAddress;
+            //Load State info
+
+            if (currentContact.State == null)
+            {
+                ConnectedWindow_ComboBox_State.SelectedIndex = 0;
+            }
+            else if (currentContact.State != null)
+            {
+                ConnectedWindow_ComboBox_State.SelectedItem = currentContact.State;
+                MessageBox.Show(currentContact.State.ToString());
+            }
+            textBox_State.Text = currentContact.State;
+            textBox_TelephoneNumber.Text = currentContact.TelephoneNumber;
+            textBox_Zip.Text = currentContact.Zip;
+            textBox_DOB.Text = currentContact.Birthdate;
+
+
+            //get category from Object
+            //If currentContact catagory has a value
+            if (currentContact.Category == null)
+            {
+                currentContact.Category = "None";
+                ConnectedWinow_radioButton_None.IsChecked = true;
+            }
+
+            if (currentContact.Category != null)
+            {
+
+                string contactCategory = currentContact.Category;
+
+
+                string generalCategory = "General";
+                string noneCategory = "None";
+                string workCategoy = "Work";
+                string personalCategory = "Personal";
+
+                if (generalCategory == currentContact.Category)
+                {
+                    ConnectedWindow_radioButton_General.IsChecked = true;
+                    return;
+                }
+                else if (noneCategory == currentContact.Category)
+                {
+                    ConnectedWinow_radioButton_None.IsChecked = true;
+                    return;
+                }
+                else if (workCategoy == currentContact.Category)
+                {
+                    ConnectedWindow_radioButton_Work.IsChecked = true;
+                    return;
+                }
+                else if (personalCategory == currentContact.Category)
+                {
+                    ConnectedWindow_radioButton_Personal.IsChecked = true;
+                    return;
+                }
+                ConnectedWinow_radioButton_None.IsChecked = true;
+            }
+
+
+
         }
     }
 }
