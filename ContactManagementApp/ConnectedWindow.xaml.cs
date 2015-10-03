@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -104,11 +105,6 @@ namespace ContactManagementApp
         }
 
         
-    
-
-
-
-
         //Save Button Click
         private void button_Save_Click(object sender, RoutedEventArgs e)
         {
@@ -122,6 +118,11 @@ namespace ContactManagementApp
         {
             // string date = DateTime.Parse(textBox_DOB.Text).ToShortDateString();
 
+            //Verify Date
+
+
+
+            //Grab input from textboxes
             currentContact = entry;
 
             entry.Address1 = textBox_Address1.Text;
@@ -298,5 +299,21 @@ namespace ContactManagementApp
             return;
         }
 
+
+        //DOB input textbox only allows Digits to be entered
+        private void textBox_DOB_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+
+        //Clear Textboxes on Focus
+        private void onFocusClear(object sender, RoutedEventArgs e)
+        {
+            var textbox = (TextBox)sender;
+            textbox.Text = String.Empty;
+
+
+        }
     }
 }

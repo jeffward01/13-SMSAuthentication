@@ -30,6 +30,14 @@ namespace ContactManagementApp
             InitializeComponent();
 
             //Data Grid
+            //Building Out Data Grid
+            /*
+            if(mainWindow_radioButton_General.IsChecked == true)
+            {
+               dataGrid_ContactList.ItemsSource = ContactService.Contacts.
+
+            }
+            */
             dataGrid_ContactList.ItemsSource = ContactService.Contacts;
 
             //Initialize Load name in menu bar

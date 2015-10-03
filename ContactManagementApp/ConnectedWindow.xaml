@@ -32,7 +32,7 @@
             <Label x:Name="label" Content="City:" HorizontalAlignment="Left" Height="24" Margin="147.5,89,0,0" VerticalAlignment="Top" Width="96" Grid.Column="1"/>
             <TextBox x:Name="textBox_City" HorizontalAlignment="Left" Height="23" Margin="147.5,113,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
             <Label x:Name="label1" Content="DOB:" HorizontalAlignment="Left" Height="33" Margin="87,327,0,0" VerticalAlignment="Top" Width="98"/>
-            <TextBox x:Name="textBox_DOB" HorizontalAlignment="Left" Height="24" Margin="87,360,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="107"/>
+            <TextBox x:Name="textBox_DOB" HorizontalAlignment="Left" Height="24" Margin="87,360,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="107" PreviewTextInput="textBox_DOB_PreviewTextInput" GotFocus="onFocusClear"/>
             <Menu  x:Name="menu" Background="CornflowerBlue" HorizontalAlignment="Left" Height="27" VerticalAlignment="Top" Width="624" Grid.ColumnSpan="2" Margin="0,-8,0,0">
                 <MenuItem Header="File" Height="28" Width="606">
 
