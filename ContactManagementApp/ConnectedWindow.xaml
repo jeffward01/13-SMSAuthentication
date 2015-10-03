@@ -19,7 +19,7 @@
             <Label x:Name="label_FirstName_Copy1" Content="Email Address:" HorizontalAlignment="Left" Margin="23,158,0,0" VerticalAlignment="Top"/>
             <TextBox x:Name="textBox_Email" HorizontalAlignment="Left" Height="24" Margin="23,189,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="107"/>
             <Label x:Name="label_FirstName_Copy2" Content="Telephone Number:" HorizontalAlignment="Left" Margin="23,232,0,0" VerticalAlignment="Top" Width="119"/>
-            <TextBox x:Name="textBox_TelephoneNumber" HorizontalAlignment="Left" Height="24" Margin="23,258,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="107"/>
+            <TextBox x:Name="textBox_TelephoneNumber" HorizontalAlignment="Left" Height="24" Margin="23,258,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="107" PreviewTextInput="textBox_DOB_PreviewTextInput"/>
             <Label x:Name="label_FirstName_Copy3" Content="State" HorizontalAlignment="Left" Margin="215,163,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
             <TextBox x:Name="textBox_State" HorizontalAlignment="Left" Height="24" Margin="215,189,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="107" Grid.ColumnSpan="2"/>
             <Label x:Name="label_FirstName_Copy4" Content="Zip:" HorizontalAlignment="Left" Margin="135.5,163,0,0" VerticalAlignment="Top" Grid.Column="1"/>
@@ -31,8 +31,8 @@
             <Button x:Name="button_Save" Content="Save" HorizontalAlignment="Left" Height="45" Margin="47.5,258,0,0" VerticalAlignment="Top" Width="100" Click="button_Save_Click" Grid.Column="1"/>
             <Label x:Name="label" Content="City:" HorizontalAlignment="Left" Height="24" Margin="147.5,89,0,0" VerticalAlignment="Top" Width="96" Grid.Column="1"/>
             <TextBox x:Name="textBox_City" HorizontalAlignment="Left" Height="23" Margin="147.5,113,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
-            <Label x:Name="label1" Content="DOB:" HorizontalAlignment="Left" Height="33" Margin="87,327,0,0" VerticalAlignment="Top" Width="98"/>
-            <TextBox x:Name="textBox_DOB" HorizontalAlignment="Left" Height="24" Margin="87,360,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="107" PreviewTextInput="textBox_DOB_PreviewTextInput" GotFocus="onFocusClear"/>
+            <Label x:Name="label1" Content="DOB :" HorizontalAlignment="Left" Height="33" Margin="44,355,0,0" VerticalAlignment="Top" Width="43" RenderTransformOrigin="-0.224,0.485"/>
+            <TextBox x:Name="textBox_DOB" HorizontalAlignment="Left" Height="24" Margin="92,355,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="107" PreviewTextInput="textBox_DOB_PreviewTextInput" RenderTransformOrigin="1.117,1.521"/>
             <Menu  x:Name="menu" Background="CornflowerBlue" HorizontalAlignment="Left" Height="27" VerticalAlignment="Top" Width="624" Grid.ColumnSpan="2" Margin="0,-8,0,0">
                 <MenuItem Header="File" Height="28" Width="606">
 
@@ -47,6 +47,7 @@
             <RadioButton GroupName="Categories" x:Name="ConnectedWindow_radioButton_Work" Content="Work" HorizontalAlignment="Left" Height="16" Margin="118,372,0,0" VerticalAlignment="Top" Width="62" Grid.Column="1"/>
             <RadioButton GroupName="Categories" x:Name="ConnectedWindow_radioButton_Personal" Content="Personal" HorizontalAlignment="Left" Height="16" Margin="194,372,0,0" VerticalAlignment="Top" Width="70" Grid.Column="1"/>
             <RadioButton GroupName="Categories" x:Name="ConnectedWindow_radioButton_General" Content="General" HorizontalAlignment="Left" Height="16" Margin="270,372,0,0" VerticalAlignment="Top" Width="70" Grid.Column="1"/>
+            <Label x:Name="label2" Content="(MM/DD/YYYY)" HorizontalAlignment="Left" Height="28" Margin="92,384,0,0" VerticalAlignment="Top" Width="107" RenderTransformOrigin="0.292,0.411"/>
         </Grid>
     </Grid>
 </Window>

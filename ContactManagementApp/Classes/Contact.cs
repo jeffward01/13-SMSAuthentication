@@ -24,7 +24,7 @@ namespace ContactManagementApp.Classes
         }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public DateTime Birthdate { get; set; }
+        public string Birthdate { get; set; }
         public string EmailAddress { get; set; }
         public string TelephoneNumber { get; set; }
         public string Address1 { get; set; }

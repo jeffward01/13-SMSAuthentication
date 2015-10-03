@@ -27,6 +27,7 @@ namespace ContactManagementApp
         public ConnectedWindow()
         {
             InitializeComponent();
+            
         }
 
         //Properties
@@ -58,12 +59,12 @@ namespace ContactManagementApp
             textBox_State.Text = entry.State;
             textBox_TelephoneNumber.Text = entry.State;
             textBox_Zip.Text = entry.State;
-            textBox_DOB.Text = entry.Birthdate.ToShortDateString();
-            
-            //get category from Object
+            textBox_DOB.Text = entry.Birthdate; 
 
+
+            //get category from Object
             //If entry catagory has a value
-            if(entry.Category == null)
+            if (entry.Category == null)
             {
                 entry.Category = "None";
                 ConnectedWinow_radioButton_None.IsChecked = true;
@@ -116,9 +117,9 @@ namespace ContactManagementApp
         //Save Entry || Edit mode Bool
         private void SaveEntry(Contact entry)
         {
-            // string date = DateTime.Parse(textBox_DOB.Text).ToShortDateString();
+         
 
-            //Verify Date
+            //Verify Date is in the correct format
 
 
 
@@ -127,7 +128,9 @@ namespace ContactManagementApp
 
             entry.Address1 = textBox_Address1.Text;
             entry.Address2 = textBox_Address2.Text;
-            entry.Birthdate = DateTime.Parse(textBox_DOB.Text);
+
+            //Format Date correctly on Save
+            entry.Birthdate = textBox_DOB.Text.ToString();
             entry.City = textBox_City.Text;
             entry.EmailAddress = textBox_Email.Text;
             entry.FirstName = textBox_FirstName.Text;
@@ -303,7 +306,7 @@ namespace ContactManagementApp
         //DOB input textbox only allows Digits to be entered
         private void textBox_DOB_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            Regex regex = new Regex("[^0-9]+");
+            Regex regex = new Regex("[^0-9/-]+");
             e.Handled = regex.IsMatch(e.Text);
         }
 
@@ -312,8 +315,10 @@ namespace ContactManagementApp
         {
             var textbox = (TextBox)sender;
             textbox.Text = String.Empty;
-
-
         }
+
+
+
+
     }
 }
