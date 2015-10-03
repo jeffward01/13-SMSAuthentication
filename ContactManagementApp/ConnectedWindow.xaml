@@ -43,10 +43,10 @@
                 </MenuItem>
             </Menu>
             <Label x:Name="ConnectedWindow_Label_Categories" Content="Add A Category:" HorizontalAlignment="Left" Height="28" Margin="64,344,0,0" VerticalAlignment="Top" Width="126" Grid.Column="1"/>
-            <RadioButton x:Name="ConnectedWinow_radioButton_None" Content="None" HorizontalAlignment="Left" Height="16" Margin="32,372,0,0" VerticalAlignment="Top" Width="56" Grid.Column="1"/>
-            <RadioButton x:Name="ConnectedWindow_radioButton_Work" Content="Work" HorizontalAlignment="Left" Height="16" Margin="118,372,0,0" VerticalAlignment="Top" Width="62" Grid.Column="1"/>
-            <RadioButton x:Name="ConnectedWindow_radioButton_Personal" Content="Personal" HorizontalAlignment="Left" Height="16" Margin="194,372,0,0" VerticalAlignment="Top" Width="70" Grid.Column="1"/>
-            <RadioButton x:Name="ConnectedWindow_radioButton_General" Content="General" HorizontalAlignment="Left" Height="16" Margin="270,372,0,0" VerticalAlignment="Top" Width="70" Grid.Column="1"/>
+            <RadioButton GroupName="Categories" x:Name="ConnectedWinow_radioButton_None" Content="None" HorizontalAlignment="Left" Height="16" Margin="32,372,0,0" VerticalAlignment="Top" Width="56" Grid.Column="1"/>
+            <RadioButton GroupName="Categories" x:Name="ConnectedWindow_radioButton_Work" Content="Work" HorizontalAlignment="Left" Height="16" Margin="118,372,0,0" VerticalAlignment="Top" Width="62" Grid.Column="1"/>
+            <RadioButton GroupName="Categories" x:Name="ConnectedWindow_radioButton_Personal" Content="Personal" HorizontalAlignment="Left" Height="16" Margin="194,372,0,0" VerticalAlignment="Top" Width="70" Grid.Column="1"/>
+            <RadioButton GroupName="Categories" x:Name="ConnectedWindow_radioButton_General" Content="General" HorizontalAlignment="Left" Height="16" Margin="270,372,0,0" VerticalAlignment="Top" Width="70" Grid.Column="1"/>
         </Grid>
     </Grid>
 </Window>

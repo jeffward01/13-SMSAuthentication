@@ -49,11 +49,13 @@ namespace ContactManagementApp
             //Open Window
             var window = new ConnectedWindow { Owner = this };
 
+            //Set new window to Edit Mode Off
             window.IsEditMode = false;
 
-            //Load Entry here optional
+            //Load Entry here 
             Contact newContact = new Contact();
 
+            //Load new contact with injection function
             window.LoadEntry(newContact);
 
             //Open Dialog

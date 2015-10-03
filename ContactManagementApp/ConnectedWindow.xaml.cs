@@ -44,8 +44,8 @@ namespace ContactManagementApp
 
         public void LoadEntry(Contact entry)
         {
-           //Save instance to class Varible
-                currentContact = entry;
+            //Save instance to class Varible
+            currentContact = entry;
 
             //Load user interface to entry that is passed in
             textBox_FirstName.Text = entry.FirstName;
@@ -57,10 +57,57 @@ namespace ContactManagementApp
             textBox_State.Text = entry.State;
             textBox_TelephoneNumber.Text = entry.State;
             textBox_Zip.Text = entry.State;
-            
-
             textBox_DOB.Text = entry.Birthdate.ToShortDateString();
+            
+            //get category from Object
+
+            //If entry catagory has a value
+            if(entry.Category == null)
+            {
+                entry.Category = "None";
+                ConnectedWinow_radioButton_None.IsChecked = true;
+            }
+
+            if (entry.Category != null)
+            {
+
+                string contactCategory = entry.Category;
+
+
+                string generalCategory = "General";
+                string noneCategory = "None";
+                string workCategoy = "Work";
+                string personalCategory = "Personal";
+
+                if (generalCategory == entry.Category)
+                {
+                    ConnectedWindow_radioButton_General.IsChecked = true;
+                    return;
+                }
+                else if (noneCategory == entry.Category)
+                {
+                    ConnectedWinow_radioButton_None.IsChecked = true;
+                    return;
+                }
+                else if (workCategoy == entry.Category)
+                {
+                    ConnectedWindow_radioButton_Work.IsChecked = true;
+                    return;
+                }
+                else if (personalCategory == entry.Category)
+                {
+                    ConnectedWindow_radioButton_Personal.IsChecked = true;
+                    return;
+                }
+                ConnectedWinow_radioButton_None.IsChecked = true;
+            }
         }
+
+        
+    
+
+
+
 
         //Save Button Click
         private void button_Save_Click(object sender, RoutedEventArgs e)
@@ -88,12 +135,45 @@ namespace ContactManagementApp
             entry.TelephoneNumber = textBox_TelephoneNumber.Text;
             entry.Zip = textBox_Zip.Text;
 
-            //Category
 
-           // string myCategory = 
+            //Save Category
+            if (ConnectedWinow_radioButton_None.IsChecked == true)
+            {
 
-            //Add validation later to not rewrite on ID's
-            //If in Editmode, Refresh
+                string input = "None";
+                entry.Category = input;
+                MessageBox.Show(entry.Category);
+            }
+            else if (ConnectedWindow_radioButton_Work.IsChecked == true)
+            {
+                string input = "Work";
+                entry.Category = input;
+                MessageBox.Show(entry.Category);
+
+            }
+            else if (ConnectedWindow_radioButton_General.IsChecked == true)
+            {
+                string input = "General";
+                entry.Category = input;
+                MessageBox.Show(entry.Category);
+
+            }
+            else if (ConnectedWindow_radioButton_Personal.IsChecked == true)
+            {
+                string input = "Personal";
+                entry.Category = input;
+                MessageBox.Show(entry.Category);
+            }
+            else
+            {
+                string input = "None";
+                entry.Category = input;
+                MessageBox.Show(entry.Category);
+
+            }
+            //Save catgory goes above 
+
+
             if (IsEditMode == true)
             {
                 // get a reference to the main window
@@ -110,19 +190,8 @@ namespace ContactManagementApp
             }
             //Close Window
             Close();
-
         }
-        //Read category 
-      ///  public string ReadCategory()
-      //  {
-         //   string mySelection = 
 
-
-
-
-     //   }
-
-       
         private void MenuItem_Save_Click(object sender, RoutedEventArgs e)
         {
             //If file name has not been rewritten
@@ -130,10 +199,8 @@ namespace ContactManagementApp
             {
                 OpenSaveAs();
             }
-
             try
             {
-
                 //Check contents of FileName
                 string filenameConetents = File.ReadAllText(filePath);
 
