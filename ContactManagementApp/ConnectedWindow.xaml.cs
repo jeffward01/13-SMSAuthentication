@@ -31,6 +31,7 @@ namespace ContactManagementApp
         }
 
         //Properties
+
         //Declare new contact
         private Contact currentContact;
         public bool IsEditMode = true;
@@ -43,6 +44,7 @@ namespace ContactManagementApp
         public string myCategory;
         public string myState;
 
+        //Combo Box code, and loads information into edit window after the edit wondow is loaded
         public void isLoaded()
         {
             // ... A List.
@@ -112,6 +114,7 @@ namespace ContactManagementApp
 
         }
 
+        //Load Entry to Edit
         public void LoadEntry(Contact entry)
         {
             currentContact = entry;
@@ -189,7 +192,7 @@ namespace ContactManagementApp
 
             }
 
-
+            //Edit mode bool
             if (IsEditMode == true)
             {
                 // get a reference to the main window
@@ -208,6 +211,7 @@ namespace ContactManagementApp
             Close();
         }
 
+        //Top Bar - Menu Item  Save 
         private void MenuItem_Save_Click(object sender, RoutedEventArgs e)
         {
             //If file name has not been rewritten
@@ -235,17 +239,19 @@ namespace ContactManagementApp
             }
         }
 
-
+        //Top Bar - Menu Item  Save AS
         private void MenuItem_SaveAs_Click(object sender, RoutedEventArgs e)
         {
             OpenSaveAs();
         }
 
+        //Top Bar - Menu Item  Print
         private void MenuItem_Print_Click(object sender, RoutedEventArgs e)
         {
             SendToPrint();
         }
 
+        //Top Bar - Menu Item  Exit
         private void MenutItem_Exit_Click(object sender, RoutedEventArgs e)
         {
             MessageBoxResult result = MessageBox.Show("Are you sure you want to Quit?", "Exit Prompt", MessageBoxButton.YesNo);
@@ -374,6 +380,7 @@ namespace ContactManagementApp
             this.Title = "Selected: " + value;
         }
 
+        //Loads Edit window so that the values (particually the combo box, can be populated with the window LOADED
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             isLoaded();
@@ -417,7 +424,6 @@ namespace ContactManagementApp
 
                 string contactCategory = currentContact.Category;
 
-
                 string generalCategory = "General";
                 string noneCategory = "None";
                 string workCategoy = "Work";
@@ -445,13 +451,10 @@ namespace ContactManagementApp
                 }
                 ConnectedWinow_radioButton_None.IsChecked = true;
             }
-
-
-
         }
 
+
         //View Filter for RafioButton Change
-
-
+        //Insert Below
     }
 }
