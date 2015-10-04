@@ -29,15 +29,6 @@ namespace ContactManagementApp
         {
             InitializeComponent();
 
-            //Data Grid
-            //Building Out Data Grid
-            /*
-            if(mainWindow_radioButton_General.IsChecked == true)
-            {
-               dataGrid_ContactList.ItemsSource = ContactService.Contacts.
-
-            }
-            */
             dataGrid_ContactList.ItemsSource = ContactService.Contacts;
 
             //Initialize Load name in menu bar
@@ -165,14 +156,27 @@ namespace ContactManagementApp
 
                 try
                 {
+
+                    /* HELP HERE OPENING A FILE
+
                     //Save file from a JSON object into a ContactService Class
                     Contact newContactList = JsonConvert.DeserializeObject<Contact>(myFile);
+
+
+                    foreach ( Contact c in newContactList)
+                    {
+                        ContactService.Add(c);
+                    }
+                    //Add new file to ContactService List
+                    
 
                     //Set newContactList as THE new ContactList
                     ContactList = newContactList;
 
                     //Refresh grid
                     dataGrid_ContactList.ItemsSource = null;
+
+                        */
                 }
                 catch
                 {
@@ -197,7 +201,7 @@ namespace ContactManagementApp
 
             try
             {
-
+                
                 //Check contents of FileName
                 string filenameConetents = File.ReadAllText(filePath);
 
@@ -289,6 +293,7 @@ namespace ContactManagementApp
                 //Writes the contents (text) to the file
                 File.WriteAllText(fileNameNew, myContents);
 
+
                 //Display File Name
                 // label_fileName.Content = text,
 
@@ -329,6 +334,51 @@ namespace ContactManagementApp
                     MessageBox.Show("Error opening file, please contact system Admin");
                 }
             }
+        }
+
+        //
+
+        //Under Contruction need HELP
+        //
+
+        //View on Radio Button Changed
+        private void mainWindow_radioButton_None_Checked(object sender, RoutedEventArgs e)
+        {
+            // ... Get the RadioButton.
+            var RadioButton = sender as RadioButton;
+            
+            // ... Set SelectedItem as Window Title.
+            string value = RadioButton.Content.ToString();
+            
+            if(value == "None")
+            {
+              //  foreach (Contact search in ??? )
+                {
+              //      dataGrid_ContactList.ItemsSource = search.Category;
+                }
+
+            }
+            else if (value == "Work")
+            {
+
+
+            }
+            else if (value == "General")
+            {
+
+
+            }
+            else if (value == "Personal")
+            {
+
+
+            }
+            else
+            {
+
+
+            }
+
         }
     }
 }

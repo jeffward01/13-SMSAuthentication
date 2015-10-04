@@ -188,7 +188,6 @@ namespace ContactManagementApp
                 MessageBox.Show(currentContact.Category);
 
             }
-            //Save catgory goes above 
 
 
             if (IsEditMode == true)
@@ -398,9 +397,8 @@ namespace ContactManagementApp
             else if (currentContact.State != null)
             {
                 ConnectedWindow_ComboBox_State.SelectedItem = currentContact.State;
-                MessageBox.Show(currentContact.State.ToString());
             }
-            textBox_State.Text = currentContact.State;
+           
             textBox_TelephoneNumber.Text = currentContact.TelephoneNumber;
             textBox_Zip.Text = currentContact.Zip;
             textBox_DOB.Text = currentContact.Birthdate;
@@ -451,5 +449,8 @@ namespace ContactManagementApp
 
 
         }
+
+        //View Filter for RafioButton Change
+
     }
 }

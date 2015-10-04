@@ -21,7 +21,6 @@
             <Label x:Name="label_FirstName_Copy2" Content="Telephone Number:" HorizontalAlignment="Left" Margin="23,232,0,0" VerticalAlignment="Top" Width="119"/>
             <TextBox x:Name="textBox_TelephoneNumber" HorizontalAlignment="Left" Height="24" Margin="23,258,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="107" PreviewTextInput="textBox_DOB_PreviewTextInput" TextChanged="textBox_TelephoneNumber_TextChanged"/>
             <Label x:Name="label_FirstName_Copy3" Content="State" HorizontalAlignment="Left" Margin="215,163,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
-            <TextBox x:Name="textBox_State" HorizontalAlignment="Left" Height="24" Margin="215,189,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="107" Grid.ColumnSpan="2"/>
             <Label x:Name="label_FirstName_Copy4" Content="Zip:" HorizontalAlignment="Left" Margin="135.5,163,0,0" VerticalAlignment="Top" Grid.Column="1"/>
             <TextBox x:Name="textBox_Zip" HorizontalAlignment="Left" Height="24" Margin="135.5,189,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="107" Grid.Column="1"/>
             <Label x:Name="label_FirstName_Copy5" Content="Address 1:" HorizontalAlignment="Left" Margin="215,34,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
@@ -51,7 +50,7 @@
             <Label x:Name="label3" Content="Required" HorizontalAlignment="Left" Height="29" Margin="98,22,0,0" VerticalAlignment="Top" Width="72" Foreground="Red" ForceCursor="True"/>
             <Label x:Name="label3_Copy" Content="Required" HorizontalAlignment="Left" Height="29" Margin="98,89,0,0" VerticalAlignment="Top" Width="72" Foreground="Red" ForceCursor="True" RenderTransformOrigin="0.507,1.845"/>
             <Label x:Name="label3_Copy1" Content="Required" HorizontalAlignment="Left" Height="29" Margin="130,232,0,0" VerticalAlignment="Top" Width="72" Foreground="Red" ForceCursor="True"/>
-            <ComboBox x:Name="ConnectedWindow_ComboBox_State" Grid.Column="1" HorizontalAlignment="Left" Margin="190,53,0,0" VerticalAlignment="Top" Width="120" AllowDrop="True" Loaded="ConnectedWindow_ComboBox_State_Loaded" SelectionChanged="ConnectedWindow_ComboBox_State_SelectionChanged" SelectedValuePath="Content"/>
+            <ComboBox x:Name="ConnectedWindow_ComboBox_State" HorizontalAlignment="Left" Margin="215,189,0,0" VerticalAlignment="Top" Width="120" AllowDrop="True" Loaded="ConnectedWindow_ComboBox_State_Loaded" SelectionChanged="ConnectedWindow_ComboBox_State_SelectionChanged" SelectedValuePath="Content" Grid.ColumnSpan="2"/>
         </Grid>
     </Grid>
 </Window>

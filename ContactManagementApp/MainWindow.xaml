@@ -22,9 +22,9 @@
             </MenuItem>
         </Menu>
         <Label x:Name="mainWindow_Label_Categories" Content="Display By Category:" HorizontalAlignment="Left" Height="28" Margin="62,48,0,0" VerticalAlignment="Top" Width="126"/>
-        <RadioButton GroupName="Categories" x:Name="mainWindow_radioButton_None" Content="None" HorizontalAlignment="Left" Height="16" Margin="31,76,0,0" VerticalAlignment="Top" Width="56"/>
-        <RadioButton  GroupName="Categories" x:Name="mainWindow_radioButton_Work" Content="Work" HorizontalAlignment="Left" Height="16" Margin="117,76,0,0" VerticalAlignment="Top" Width="61"/>
-        <RadioButton GroupName="Categories" x:Name="mainWindow_radioButton_Personal" Content="Personal" HorizontalAlignment="Left" Height="16" Margin="193,76,0,0" VerticalAlignment="Top" Width="70"/>
-        <RadioButton GroupName="Categories" x:Name="mainWindow_radioButton_General" Content="General" HorizontalAlignment="Left" Height="16" Margin="268,76,0,0" VerticalAlignment="Top" Width="70"/>
+        <RadioButton GroupName="Categories" x:Name="mainWindow_radioButton_None" Content="None" HorizontalAlignment="Left" Height="16" Margin="31,76,0,0" VerticalAlignment="Top" Width="56" Checked="mainWindow_radioButton_None_Checked"/>
+        <RadioButton  GroupName="Categories" x:Name="mainWindow_radioButton_Work" Content="Work" HorizontalAlignment="Left" Height="16" Margin="117,76,0,0" VerticalAlignment="Top" Width="61" Checked="mainWindow_radioButton_None_Checked"/>
+        <RadioButton GroupName="Categories" x:Name="mainWindow_radioButton_Personal" Content="Personal" HorizontalAlignment="Left" Height="16" Margin="193,76,0,0" VerticalAlignment="Top" Width="70" Checked="mainWindow_radioButton_None_Checked"/>
+        <RadioButton GroupName="Categories" x:Name="mainWindow_radioButton_General" Content="General" HorizontalAlignment="Left" Height="16" Margin="268,76,0,0" VerticalAlignment="Top" Width="70" Checked="mainWindow_radioButton_None_Checked"/>
     </Grid>
 </Window>

@@ -48,29 +48,6 @@ namespace ContactManagementApp.Classes
         }
 
         
-     /*
-
-
-       // Working on dispalaying items by category
-        public static IEnumerable<List<Contact>> Split(this IEnumerable<Contact> source, string SearchString)
-        {
-            List<Contact> Contacts = new List<Contact>();
-            foreach (var item in source)
-            {
-                if(Contacts.Count > 0 && item.Category == SearchString)
-                {
-                    yield return Contacts;
-                    Contacts = new List<Contact>();
-                }
-                Contacts.Add(item);
-            }
-            if(Contacts.Count > 0)
-            {
-                yield return Contacts;
-            }
-        }
-
-
-        */
+     
     }
 }
