@@ -97,7 +97,21 @@ namespace ContactManagementApp
         //Edit Selected Content
         private void button_Edit_Click(object sender, RoutedEventArgs e)
         {
-            doubleClickEvent();
+
+            var mainwindow = (MainWindow)Owner;
+            //Cast
+            //Create a refrence Object, save the refrence object as the selected item
+            Contact selected = (Contact)dataGrid_ContactList.SelectedItem;
+
+            if (selected != null)
+            {
+                doubleClickEvent();
+            }
+            else
+            {
+                MessageBox.Show("Please select an Item to edit");
+                return;
+            }
         }
 
 

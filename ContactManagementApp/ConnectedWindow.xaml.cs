@@ -130,13 +130,13 @@ namespace ContactManagementApp
 
 
             //Check input on required textboxes
-            if(!checkTextBoxInput())
+            if (!checkTextBoxInput())
             {
                 return;
             }
 
 
-            
+
 
             currentContact.Address1 = textBox_Address1.Text;
             currentContact.Address2 = textBox_Address2.Text;
@@ -335,32 +335,32 @@ namespace ContactManagementApp
         private void textBox_TelephoneNumber_TextChanged(object sender, TextChangedEventArgs e)
         {
             string myInput = textBox_TelephoneNumber.Text;
-          textBox_TelephoneNumber.Text =  Regex.Replace(myInput, @"(\d{3})(\d{3})(\d{4})", "$1-$2-$3");
+            textBox_TelephoneNumber.Text = Regex.Replace(myInput, @"(\d{3})(\d{3})(\d{4})", "$1-$2-$3");
         }
 
         //Check require textbox input
         public bool checkTextBoxInput()
         {
-           
-                string firstName = textBox_FirstName.Text;
-                string lastName = textBox_LastName.Text;
-                string phone = textBox_TelephoneNumber.Text;
+
+            string firstName = textBox_FirstName.Text;
+            string lastName = textBox_LastName.Text;
+            string phone = textBox_TelephoneNumber.Text;
 
 
-                if ((firstName == "" || lastName == "" || phone == ""))
-                {
-                    MessageBox.Show("Please enter the required values in the textboxes");
-                         return false; 
-                }
+            if ((firstName == "" || lastName == "" || phone == ""))
+            {
+                MessageBox.Show("Please enter the required values in the textboxes");
+                return false;
+            }
             return true;
-           
+
 
         }
 
         //State Picker ComboBox Load options
         private void ConnectedWindow_ComboBox_State_Loaded(object sender, RoutedEventArgs e)
         {
-            
+
         }
 
         //State Picker Combo Box, Select an Option
@@ -378,8 +378,8 @@ namespace ContactManagementApp
         {
             isLoaded();
             //Save instance to class Varible
-            
-          
+
+
 
             //Load user interface to currentContact that is passed in
             textBox_FirstName.Text = currentContact.FirstName;
@@ -398,7 +398,7 @@ namespace ContactManagementApp
             {
                 ConnectedWindow_ComboBox_State.SelectedItem = currentContact.State;
             }
-           
+
             textBox_TelephoneNumber.Text = currentContact.TelephoneNumber;
             textBox_Zip.Text = currentContact.Zip;
             textBox_DOB.Text = currentContact.Birthdate;
@@ -451,6 +451,7 @@ namespace ContactManagementApp
         }
 
         //View Filter for RafioButton Change
+
 
     }
 }
