@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\jward01\Documents\Visual Studio 2015\Projects\ContactManagementApp\ContactManagementApp\obj\Debug\
+C:\Users\jward01\Documents\Visual Studio 2015\Projects\WPFSMSAuth\13-SMSAuthentication\ContactManagementApp\obj\Debug\
 ContactManagementApp
 none
 false
 DEBUG;TRACE
-C:\Users\jward01\Documents\Visual Studio 2015\Projects\ContactManagementApp\ContactManagementApp\App.xaml
-2142588483
+C:\Users\jward01\Documents\Visual Studio 2015\Projects\WPFSMSAuth\13-SMSAuthentication\ContactManagementApp\App.xaml
+3-1428045830
 
-82113610294
-141740879944
-ConnectedWindow.xaml;MainWindow.xaml;
+10379975751
+18417186590
+ConnectedWindow.xaml;Login.xaml;MainWindow.xaml;
 
 False
 

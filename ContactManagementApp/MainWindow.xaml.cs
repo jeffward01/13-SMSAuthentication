@@ -16,6 +16,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Twilio;
+
 
 namespace ContactManagementApp
 {
@@ -27,7 +29,16 @@ namespace ContactManagementApp
         //Constructor
         public MainWindow()
         {
+
+            this.Hide();
+            Login li = new Login(this);
+            li.Show();
+
+
+
             InitializeComponent();
+
+           
 
             dataGrid_ContactList.ItemsSource = ContactService.Contacts;
 

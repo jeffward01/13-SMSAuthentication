@@ -1,0 +1,22 @@
+﻿<Window x:Class="ContactManagementApp.Login"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ContactManagementApp"
+        mc:Ignorable="d"
+        Title="Login" Height="300" Width="359.036">
+    <Grid Margin="0,0,2,0">
+        <Label x:Name="label" Content="Please enter your phone number to Authenticate " HorizontalAlignment="Left" Height="30" Margin="24,39,0,0" VerticalAlignment="Top" Width="288" RenderTransformOrigin="0.425,0.499"/>
+        <Label x:Name="label1" Content="An authentication text  (code) will be sent to you." HorizontalAlignment="Left" Margin="22,69,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.358,-0.66"/>
+        <Label x:Name="label2" Content="Cell Phone Number:" HorizontalAlignment="Left" Height="27" Margin="24,127,0,0" VerticalAlignment="Top" Width="116"/>
+        <TextBox x:Name="loginWindow_textBox_EnterPhone" HorizontalAlignment="Left" Height="23" Margin="145,131,0,0" TextWrapping="Wrap" Text="XXX-XXX-XXXX" VerticalAlignment="Top" Width="90" GotFocus="loginWindow_textBox_EnterPhone_GotFocus"/>
+        <Button x:Name="loginWindow_button_SendText" Content="Send Text" HorizontalAlignment="Left" Height="27" Margin="252,126,0,0" VerticalAlignment="Top" Width="72" RenderTransformOrigin="2.654,3.462" Click="loginWindow_button_SendText_Click"/>
+        <Label x:Name="label2_Copy" Content="Verification Code:" HorizontalAlignment="Left" Height="27" Margin="22,178,0,0" VerticalAlignment="Top" Width="104"/>
+        <TextBox x:Name="loginWindow_textBox_VerificationCode" HorizontalAlignment="Left" Height="27" Margin="131,182,0,0" TextWrapping="Wrap" Text="Enter Code Here" VerticalAlignment="Top" Width="104" GotFocus="loginWindow_textBox_VerificationCode_GotFocus"/>
+        <Button x:Name="loginWindow_button_SubmitCode" Content="Submit Code" HorizontalAlignment="Left" Height="27" Margin="252,182,0,0" VerticalAlignment="Top" Width="87" RenderTransformOrigin="2.654,3.462" Click="loginWindow_button_SubmitCode_Click"/>
+        <Label x:Name="label3" Content="To Resend Verification Code Click here: " HorizontalAlignment="Left" Height="37" Margin="10,222,0,0" VerticalAlignment="Top" Width="213"/>
+        <Button x:Name="loginWindow_button_ReSendText" Content="Resend Code" HorizontalAlignment="Left" Height="27" Margin="238,222,0,0" VerticalAlignment="Top" Width="101" RenderTransformOrigin="2.654,3.462"/>
+
+    </Grid>
+</Window>
