@@ -39,14 +39,40 @@ namespace ContactManagementApp
         //Submit Code Button
         private void loginWindow_button_SubmitCode_Click(object sender, RoutedEventArgs e)
         {
-            string UsersEnteredCodeString = loginWindow_textBox_VerificationCode.Text;
+           if(TestAuthCode())
+            {
+                try
+                {
+                    this.mainWindow.Show();
+                }
+                catch
+                {
+                    MessageBox.Show("There was an error trying to open the main window");
+                    this.mainWindow.ShowDialog();
+                }
+            }
+           else
+            {
+                MessageBox.Show("You entered in the wrong Validation Code.  Please Retry");
+                return;
+            }
+           
+        }
+        public bool TestAuthCode()
+        {
+            string UsersEnteredCodeString = getCodeInput();
+
+
             decimal UsersEnteredCode = Decimal.Parse(UsersEnteredCodeString);
 
             if (UsersEnteredCode == RandomGeneratedNumber)
             {
-                this.mainWindow.Show();
+                return true;
             }
-            MessageBox.Show("You entered in the wrong Validation Code.  Please Retry");
+            else
+            {
+                return false;
+            }
         }
 
         private void loginWindow_button_SendText_Click(object sender, RoutedEventArgs e)
@@ -85,6 +111,18 @@ namespace ContactManagementApp
 
             Console.WriteLine(message.Sid);
         }
+
+        //Get Code Input from user
+        public string getCodeInput()
+        {
+            string input = loginWindow_textBox_VerificationCode.Text;
+
+            input = JeffToolBox.RemoveSpecialCharacters(input);
+            input = JeffToolBox.RemoveLetters(input);
+
+            return input;
+        }
+
         public string grabPhoneNumber()
         {
             try
@@ -118,7 +156,7 @@ namespace ContactManagementApp
             string r = "";
             int i= 1;
 
-            while(i < 11)
+            while(i < 6)
             {
                 r += random.Next(0, 9);
                 i++;
@@ -146,6 +184,55 @@ namespace ContactManagementApp
         private void loginWindow_textBox_VerificationCode_GotFocus(object sender, RoutedEventArgs e)
         {
             ClearOnFocusCode();
+        }
+
+        private void loginWindow_button_ReSendText_Click(object sender, RoutedEventArgs e)
+        {
+            sendAutherizationText();
+        }
+
+        //Call User on Click with Verification Code
+        private void loginWindow_button_CallUse_Click(object sender, RoutedEventArgs e)
+        {
+            //Get Users Phone Number
+            string UsersPhoneNumber = grabPhoneNumber();
+
+            //If users number is null, stop Method.
+            if (UsersPhoneNumber == null)
+            { 
+                return;
+            }
+
+            //Generate Random 10 Digit Code for user
+            //Save Randomly Generated Number
+            RandomGeneratedNumber = GenerateRandomNumber();
+            RandomGeneratedNumberString = RandomGeneratedNumber.ToString();
+
+            //Find your Account Sid and Auth Token
+            string AccountSid = "AC61b76d7cf5033d39d3fdf1a6816e3e61";
+            string AuthToken = "1f4545334cf64e12d68a224de622178c";
+            string myTwilioPhoneNumber = "+16508351288";
+
+            //Instantaiate a new Twilio Rest Client
+            var client = new TwilioRestClient(AccountSid, AuthToken);
+
+            //Build Call Option
+            var options = new CallOptions();
+            //  options.Url = "C:\\Users\\jward01\\Documents\\Visual Studio 2015\\Projects\\WPFSMSAuth\\ContactManagementApp\\TwilioVoice.xml";
+            options.Url = "http://demo.twilio.com/docs/voice.xml";
+            options.To = UsersPhoneNumber;
+            options.From = myTwilioPhoneNumber;
+
+
+
+            //Initiate a new Outbound Call
+            var call = client.InitiateOutboundCall(options);
+
+           // var twilio = new TwilioRestClient(AccountSid, AuthToken);
+           // var message = twilio.SendMessage(myTwilioPhoneNumber, UsersPhoneNumber, "Hello, I am the computer security guard!  Here is your 10-digit pass code: +" + RandomGeneratedNumberString + ".");
+            MessageBox.Show("Users phone number: " + UsersPhoneNumber);
+            MessageBox.Show("Here is your number: " + RandomGeneratedNumberString);
+
         }
     }
 }

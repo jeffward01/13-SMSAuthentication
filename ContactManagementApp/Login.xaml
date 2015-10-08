@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ContactManagementApp"
         mc:Ignorable="d"
-        Title="Login" Height="300" Width="359.036">
+        Title="Login" Height="300" Width="463.855">
     <Grid Margin="0,0,2,0">
         <Label x:Name="label" Content="Please enter your phone number to Authenticate " HorizontalAlignment="Left" Height="30" Margin="24,39,0,0" VerticalAlignment="Top" Width="288" RenderTransformOrigin="0.425,0.499"/>
         <Label x:Name="label1" Content="An authentication text  (code) will be sent to you." HorizontalAlignment="Left" Margin="22,69,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.358,-0.66"/>
@@ -16,7 +16,8 @@
         <TextBox x:Name="loginWindow_textBox_VerificationCode" HorizontalAlignment="Left" Height="27" Margin="131,182,0,0" TextWrapping="Wrap" Text="Enter Code Here" VerticalAlignment="Top" Width="104" GotFocus="loginWindow_textBox_VerificationCode_GotFocus"/>
         <Button x:Name="loginWindow_button_SubmitCode" Content="Submit Code" HorizontalAlignment="Left" Height="27" Margin="252,182,0,0" VerticalAlignment="Top" Width="87" RenderTransformOrigin="2.654,3.462" Click="loginWindow_button_SubmitCode_Click"/>
         <Label x:Name="label3" Content="To Resend Verification Code Click here: " HorizontalAlignment="Left" Height="37" Margin="10,222,0,0" VerticalAlignment="Top" Width="213"/>
-        <Button x:Name="loginWindow_button_ReSendText" Content="Resend Code" HorizontalAlignment="Left" Height="27" Margin="238,222,0,0" VerticalAlignment="Top" Width="101" RenderTransformOrigin="2.654,3.462"/>
+        <Button x:Name="loginWindow_button_ReSendText" Content="Resend Code" HorizontalAlignment="Left" Height="27" Margin="238,222,0,0" VerticalAlignment="Top" Width="101" RenderTransformOrigin="2.654,3.462" Click="loginWindow_button_ReSendText_Click"/>
+        <Button x:Name="loginWindow_button_CallUse" Content="Call w/ Code " HorizontalAlignment="Left" Height="27" Margin="346,126,0,0" VerticalAlignment="Top" Width="85" RenderTransformOrigin="2.654,3.462" Click="loginWindow_button_CallUse_Click"/>
 
     </Grid>
 </Window>
