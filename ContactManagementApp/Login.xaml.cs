@@ -11,7 +11,10 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Linq;
 using Twilio;
+using System.Xml.Linq;
+using System.IO;
 
 namespace ContactManagementApp
 {
@@ -23,6 +26,8 @@ namespace ContactManagementApp
         private MainWindow mainWindow;
         public decimal RandomGeneratedNumber;
         public string RandomGeneratedNumberString;
+
+     
 
         //Login Constructor
         public Login()
@@ -58,12 +63,24 @@ namespace ContactManagementApp
             }
            
         }
+
+        //fix inout
         public bool TestAuthCode()
         {
             string UsersEnteredCodeString = getCodeInput();
 
+            string input = JeffToolBox.RemoveLetters(UsersEnteredCodeString);
+            input = JeffToolBox.RemoveSpecialCharacters(input);
 
-            decimal UsersEnteredCode = Decimal.Parse(UsersEnteredCodeString);
+            //MEssed up
+            if (JeffToolBox.hasLetters(input))
+            {
+
+                loginWindow_textBox_VerificationCode.Text = "";
+                return false;
+            }
+
+            decimal UsersEnteredCode = Decimal.Parse(input);
 
             if (UsersEnteredCode == RandomGeneratedNumber)
             {
@@ -79,7 +96,7 @@ namespace ContactManagementApp
         {
             sendAutherizationText();
         }
-
+        //Main Method
         public void sendAutherizationText()
         {
 
@@ -108,6 +125,10 @@ namespace ContactManagementApp
             var message = twilio.SendMessage("+16508351288", UsersPhoneNumber, "Hello, I am the computer security guard!  Here is your 10-digit pass code: +" + RandomGeneratedNumberString + ".");
             MessageBox.Show("Users phone number: " + UsersPhoneNumber);
             MessageBox.Show("Here is your number: " + RandomGeneratedNumberString);
+
+            //Create XML file and save Locally
+                    XElement RandomlyGeneratedNumberXMLFile = writeXMLFile(RandomGeneratedNumberString);
+            SaveXMLFileLocally(RandomlyGeneratedNumberXMLFile);
 
             Console.WriteLine(message.Sid);
         }
@@ -150,6 +171,9 @@ namespace ContactManagementApp
         }
 
         //Generate Random 10 digit number
+        //AND
+        //Saves XML Script
+
         public decimal GenerateRandomNumber()
         {
             Random random = new Random();
@@ -162,6 +186,7 @@ namespace ContactManagementApp
                 i++;
             }
             decimal myRandomNumber = Decimal.Parse(r);
+
             return myRandomNumber;
         }
  
@@ -232,6 +257,39 @@ namespace ContactManagementApp
            // var message = twilio.SendMessage(myTwilioPhoneNumber, UsersPhoneNumber, "Hello, I am the computer security guard!  Here is your 10-digit pass code: +" + RandomGeneratedNumberString + ".");
             MessageBox.Show("Users phone number: " + UsersPhoneNumber);
             MessageBox.Show("Here is your number: " + RandomGeneratedNumberString);
+        }
+
+        public XElement writeXMLFile(string RandomNumber)
+        {
+           
+            string Speech = " Your Verification Code is: " + RandomNumber+". ";
+            string SpeakerString = Speech;
+            string superSpeakerString = SpeakerString + SpeakerString + SpeakerString + SpeakerString;
+
+            Utility utility = new Utility();
+            var xmlFromLINQ = new XElement("Response",
+                new XElement("Say", superSpeakerString)
+                );
+            return xmlFromLINQ;
+        }
+
+        public void SaveXMLFileLocally(XElement xmlFromLINQ)
+        {
+            //Create Local Directory to Save XML File
+
+            string subPath = Environment.CurrentDirectory + "\\UserVerificationCallXMLFiles";
+
+            string FullFilePath = subPath + "\\UserVerifyCode.xml";
+
+            bool exists = System.IO.Directory.Exists(subPath);
+
+            if(!exists)
+            {
+                Directory.CreateDirectory(subPath);
+            }
+
+
+            File.WriteAllText(FullFilePath, xmlFromLINQ.ToString());
 
         }
     }
