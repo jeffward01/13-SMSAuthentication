@@ -78,3 +78,5 @@ C:\Users\jward01\Documents\Visual Studio 2015\Projects\WPFSMSAuth\ContactManagem
 C:\Users\jward01\Documents\Visual Studio 2015\Projects\WPFSMSAuth\ContactManagementApp\obj\Debug\ContactManagementApp.g.resources
 C:\Users\jward01\Documents\Visual Studio 2015\Projects\WPFSMSAuth\ContactManagementApp\obj\Debug\ContactManagementApp.Properties.Resources.resources
 C:\Users\jward01\Documents\Visual Studio 2015\Projects\WPFSMSAuth\ContactManagementApp\obj\Debug\ContactManagementApp.csproj.GenerateResource.Cache
+C:\Users\jward01\Documents\Visual Studio 2015\Projects\WPFSMSAuth\ContactManagementApp\bin\Debug\ArxOne.Ftp.dll
+C:\Users\jward01\Documents\Visual Studio 2015\Projects\WPFSMSAuth\ContactManagementApp\bin\Debug\ArxOne.Ftp.xml

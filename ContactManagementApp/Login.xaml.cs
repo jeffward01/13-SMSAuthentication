@@ -15,6 +15,7 @@ using System.Linq;
 using Twilio;
 using System.Xml.Linq;
 using System.IO;
+using System.Net;
 
 namespace ContactManagementApp
 {
@@ -27,7 +28,7 @@ namespace ContactManagementApp
         public decimal RandomGeneratedNumber;
         public string RandomGeneratedNumberString;
 
-     
+        public string FullFilePath;
 
         //Login Constructor
         public Login()
@@ -130,6 +131,9 @@ namespace ContactManagementApp
                     XElement RandomlyGeneratedNumberXMLFile = writeXMLFile(RandomGeneratedNumberString);
             SaveXMLFileLocally(RandomlyGeneratedNumberXMLFile);
 
+            //Write to FTP
+            WriteToFTP(FullFilePath);
+
             Console.WriteLine(message.Sid);
         }
 
@@ -231,12 +235,19 @@ namespace ContactManagementApp
             //Generate Random 10 Digit Code for user
             //Save Randomly Generated Number
             RandomGeneratedNumber = GenerateRandomNumber();
-            RandomGeneratedNumberString = RandomGeneratedNumber.ToString();
 
+            RandomGeneratedNumberString = RandomGeneratedNumber.ToString();
             //Find your Account Sid and Auth Token
             string AccountSid = "AC61b76d7cf5033d39d3fdf1a6816e3e61";
             string AuthToken = "1f4545334cf64e12d68a224de622178c";
             string myTwilioPhoneNumber = "+16508351288";
+
+            //Create XML file and save Locally
+            XElement RandomlyGeneratedNumberXMLFile = writeXMLFile(RandomGeneratedNumberString);
+            SaveXMLFileLocally(RandomlyGeneratedNumberXMLFile);
+
+            //Write to FTP
+            WriteToFTP(FullFilePath);
 
             //Instantaiate a new Twilio Rest Client
             var client = new TwilioRestClient(AccountSid, AuthToken);
@@ -244,7 +255,10 @@ namespace ContactManagementApp
             //Build Call Option
             var options = new CallOptions();
             //  options.Url = "C:\\Users\\jward01\\Documents\\Visual Studio 2015\\Projects\\WPFSMSAuth\\ContactManagementApp\\TwilioVoice.xml";
-            options.Url = "http://demo.twilio.com/docs/voice.xml";
+            // options.Url = "http://demo.twilio.com/docs/voice.xml";
+
+            //Get file from FTP Server
+            options.Url = "http://jeffwarddevelopment.com/ClassXMLFiles%3A21";
             options.To = UsersPhoneNumber;
             options.From = myTwilioPhoneNumber;
 
@@ -279,7 +293,7 @@ namespace ContactManagementApp
 
             string subPath = Environment.CurrentDirectory + "\\UserVerificationCallXMLFiles";
 
-            string FullFilePath = subPath + "\\UserVerifyCode.xml";
+             FullFilePath = subPath + "\\UserVerifyCode.xml";
 
             bool exists = System.IO.Directory.Exists(subPath);
 
@@ -292,5 +306,32 @@ namespace ContactManagementApp
             File.WriteAllText(FullFilePath, xmlFromLINQ.ToString());
 
         }
+
+        //FTP REQUEST
+        //
+        //
+        //
+        //
+        //FTP REQUEST
+
+        //Write FIle to FTP Server
+        public void WriteToFTP(string LocalXMLpath)
+        {
+            using (WebClient client = new WebClient())
+            {
+                client.Credentials = new NetworkCredential("jeffward", "Window18!");
+                client.UploadFile("ftp://jeffwarddevelopment.com/ClassXMLFiles:21", "STOR", LocalXMLpath);
+                
+            }
+        }
+
     }
 }
+
+
+//TODO
+//Write to FTP Server
+
+    //get URL of file on FTP Server
+
+    //Put URL in phone call
