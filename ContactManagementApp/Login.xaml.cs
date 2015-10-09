@@ -52,7 +52,10 @@ namespace ContactManagementApp
             {
                 try
                 {
+                    
                     this.mainWindow.Show();
+                   
+                    this.Close();
                 }
                 catch
                 {
