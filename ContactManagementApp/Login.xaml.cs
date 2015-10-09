@@ -53,8 +53,9 @@ namespace ContactManagementApp
                 }
                 catch
                 {
-                    MessageBox.Show("There was an error trying to open the main window");
-                    this.mainWindow.ShowDialog();
+                    MessageBox.Show("There was an error trying to open the main window.  Please restart program and try again.");
+                    //  this.mainWindow.ShowDialog();
+                    return;
                 }
             }
            else
@@ -66,6 +67,10 @@ namespace ContactManagementApp
         }
 
         //fix inout
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public bool TestAuthCode()
         {
             string UsersEnteredCodeString = getCodeInput();
@@ -74,13 +79,14 @@ namespace ContactManagementApp
             input = JeffToolBox.RemoveSpecialCharacters(input);
 
             //MEssed up
-            if (JeffToolBox.hasLetters(input))
-            {
+       ///     if (JeffToolBox.hasLetters(input))
+         //   {
 
-                loginWindow_textBox_VerificationCode.Text = "";
-                return false;
-            }
+         //       loginWindow_textBox_VerificationCode.Text = "";
+        //        return false;
+          //  }
 
+            //Logic to see if code is correct and matches saved code
             decimal UsersEnteredCode = Decimal.Parse(input);
 
             if (UsersEnteredCode == RandomGeneratedNumber)
@@ -128,7 +134,7 @@ namespace ContactManagementApp
             MessageBox.Show("Here is your number: " + RandomGeneratedNumberString);
 
             //Create XML file and save Locally
-                    XElement RandomlyGeneratedNumberXMLFile = writeXMLFile(RandomGeneratedNumberString);
+            XDocument RandomlyGeneratedNumberXMLFile = writeXMLFile(RandomGeneratedNumberString);
             SaveXMLFileLocally(RandomlyGeneratedNumberXMLFile);
 
             //Write to FTP
@@ -243,7 +249,7 @@ namespace ContactManagementApp
             string myTwilioPhoneNumber = "+16508351288";
 
             //Create XML file and save Locally
-            XElement RandomlyGeneratedNumberXMLFile = writeXMLFile(RandomGeneratedNumberString);
+            XDocument RandomlyGeneratedNumberXMLFile = writeXMLFile(RandomGeneratedNumberString);
             SaveXMLFileLocally(RandomlyGeneratedNumberXMLFile);
 
             //Write to FTP
@@ -258,9 +264,14 @@ namespace ContactManagementApp
             // options.Url = "http://demo.twilio.com/docs/voice.xml";
 
             //Get file from FTP Server
-            options.Url = "http://jeffwarddevelopment.com/ClassXMLFiles%3A21";
+
             options.To = UsersPhoneNumber;
             options.From = myTwilioPhoneNumber;
+            options.Url = "http://jeffwarddevelopment.com/twilio_calls/call.xml";
+            options.Method = "GET";
+            options.FallbackMethod = "GET";
+            options.StatusCallbackMethod = "GET";
+            options.Record = false;
 
 
 
@@ -273,7 +284,7 @@ namespace ContactManagementApp
             MessageBox.Show("Here is your number: " + RandomGeneratedNumberString);
         }
 
-        public XElement writeXMLFile(string RandomNumber)
+        public XDocument writeXMLFile(string RandomNumber)
         {
            
             string Speech = " Your Verification Code is: " + RandomNumber+". ";
@@ -281,13 +292,18 @@ namespace ContactManagementApp
             string superSpeakerString = SpeakerString + SpeakerString + SpeakerString + SpeakerString;
 
             Utility utility = new Utility();
-            var xmlFromLINQ = new XElement("Response",
-                new XElement("Say", superSpeakerString)
-                );
-            return xmlFromLINQ;
+
+            XDocument doc = new XDocument(new XDeclaration("1.0", "utf-8", "yes"));
+
+            doc.Add(new XElement("Response",
+                new XElement("Say", new XAttribute("voice", "alice"), superSpeakerString),
+                new XElement ("Play", "http://demo.twilio.com/docs/classic.mp3")
+            ));
+
+            return doc;
         }
 
-        public void SaveXMLFileLocally(XElement xmlFromLINQ)
+        public void SaveXMLFileLocally(XDocument xmlFromLINQ)
         {
             //Create Local Directory to Save XML File
 
@@ -319,9 +335,9 @@ namespace ContactManagementApp
         {
             using (WebClient client = new WebClient())
             {
-                client.Credentials = new NetworkCredential("jeffward", "Window18!");
-                client.UploadFile("ftp://jeffwarddevelopment.com/ClassXMLFiles:21", "STOR", LocalXMLpath);
-                
+                client.Credentials = new NetworkCredential("jeffward", "PASSWORD!");
+                client.UploadFile("ftp://jeffwarddevelopment.com/public_html/twilio_calls/call.xml", "STOR", LocalXMLpath);
+
             }
         }
 
