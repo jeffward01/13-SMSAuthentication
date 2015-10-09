@@ -25,9 +25,12 @@ namespace ContactManagementApp
     public partial class Login : Window
     {
         private MainWindow mainWindow;
+        
+        //Users Verification Number Properties
         public decimal RandomGeneratedNumber;
         public string RandomGeneratedNumberString;
-
+        
+        //String of XML File Local FULL Path
         public string FullFilePath;
 
         //Login Constructor
@@ -42,7 +45,7 @@ namespace ContactManagementApp
             this.mainWindow = mainWindow;
         }
 
-        //Submit Code Button
+        //Login Screen Button - Submit Code Button
         private void loginWindow_button_SubmitCode_Click(object sender, RoutedEventArgs e)
         {
            if(TestAuthCode())
@@ -66,11 +69,7 @@ namespace ContactManagementApp
            
         }
 
-        //fix inout
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
+        //Ensures Authorization Code only contains Numbers, then tests Auth Code to see if it matches correct code
         public bool TestAuthCode()
         {
             string UsersEnteredCodeString = getCodeInput();
@@ -99,11 +98,13 @@ namespace ContactManagementApp
             }
         }
 
+        //Login Screen Button to send Authorization Text to user
         private void loginWindow_button_SendText_Click(object sender, RoutedEventArgs e)
         {
             sendAutherizationText();
         }
-        //Main Method
+
+        //Sends Authorization Text Message to user
         public void sendAutherizationText()
         {
 
@@ -154,6 +155,7 @@ namespace ContactManagementApp
             return input;
         }
 
+        //Get Users phone number from txtbox, verify that it is indeed a proper phone number
         public string grabPhoneNumber()
         {
             try
@@ -181,9 +183,6 @@ namespace ContactManagementApp
         }
 
         //Generate Random 10 digit number
-        //AND
-        //Saves XML Script
-
         public decimal GenerateRandomNumber()
         {
             Random random = new Random();
@@ -216,11 +215,13 @@ namespace ContactManagementApp
             loginWindow_textBox_VerificationCode.Text = "";
         }
 
+        //Clears Verification Code on Ficus
         private void loginWindow_textBox_VerificationCode_GotFocus(object sender, RoutedEventArgs e)
         {
             ClearOnFocusCode();
         }
 
+        //Button from Login Screen to resend a TEXT Message
         private void loginWindow_button_ReSendText_Click(object sender, RoutedEventArgs e)
         {
             sendAutherizationText();
@@ -284,6 +285,7 @@ namespace ContactManagementApp
             MessageBox.Show("Here is your number: " + RandomGeneratedNumberString);
         }
 
+        //Creates an XML file with user verification code
         public XDocument writeXMLFile(string RandomNumber)
         {
            
@@ -303,6 +305,7 @@ namespace ContactManagementApp
             return doc;
         }
 
+        //Saves XML file locally
         public void SaveXMLFileLocally(XDocument xmlFromLINQ)
         {
             //Create Local Directory to Save XML File
@@ -323,6 +326,7 @@ namespace ContactManagementApp
 
         }
 
+        //Writes to FTP Server
         //FTP REQUEST
         //
         //
@@ -340,14 +344,6 @@ namespace ContactManagementApp
 
             }
         }
-
     }
 }
 
-
-//TODO
-//Write to FTP Server
-
-    //get URL of file on FTP Server
-
-    //Put URL in phone call
